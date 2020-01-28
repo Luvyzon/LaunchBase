@@ -17,6 +17,7 @@ const aluno03 = {
 const media = (aluno01.nota + aluno02.nota + aluno03.nota) / 3 // objeto.funcionalidade-atributo( atributo do objeto)
 console.log(media)
 
+//                              aula 9
 //vetores ARRAY
 
 const alunos = [ // uma variavel que armazena varios valores valendo por varias variaveis
