@@ -1,38 +1,59 @@
-//                                   aula 10
-// Funções e metodos
+//                                   aula 10 e 11
+// Funções e metodos   // estrutura de repetição
 
 const alunosDaTurmaA = [ 
     {
-        nome: `Matheus`,
+        nome: 'Matheus',
         nota: 10
     },
     {
-        nome: `Diego`,
+        nome: 'Diego',
         nota: 9.8
     },
     {
-        nome: `Maik`,
+        nome: 'Maik',
         nota: 3
+    }
+    ,// adição aula 11
+    {
+        nome: 'cledesvaldo',
+        nota: 4
     }
 ]
 
 const alunosDaTurmaB = [ 
     {
-        nome: `Arthur`,
+        nome: 'Arthur',
         nota: 9
     },
     {
-        nome: `Carlos`,
+        nome: 'Carlos',
         nota: 6
     },
     {
-        nome: `Jonas`,
+        nome: 'Jonas',
         nota: 8
+    }
+    ,// adicao aula 11
+    {
+        nome: 'carlito',
+        nota: 10
     }
 ]
 
 function calculaMedia(alunos){ // função
-    return (alunos[0].nota + alunos[1].nota + alunos[2].nota) / 3
+    //return (alunos[0].nota + alunos[1].nota + alunos[2].nota) / 3
+    
+    // conteuno aula 11
+    let soma = 0
+    for(let i = 0; i < alunos.length; i++){
+        console.log(i)
+        soma = soma + alunos[i].nota
+
+    }
+    const media = soma / alunos.length
+    
+    return media
 }
 const media1 = calculaMedia(alunosDaTurmaA)
 const media2 = calculaMedia(alunosDaTurmaB)
@@ -46,4 +67,7 @@ function enviaMensagem(media, turma){
 }
 enviaMensagem (media1, 'turma A')
 enviaMensagem (media2, 'turma B')
+
+//                                12
+// escopos
 
