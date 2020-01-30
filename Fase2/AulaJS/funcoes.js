@@ -47,7 +47,7 @@ function calculaMedia(alunos){ // função
     // conteuno aula 11
     let soma = 0
     for(let i = 0; i < alunos.length; i++){
-        console.log(i)
+       // console.log(i)
         soma = soma + alunos[i].nota
 
     }
@@ -68,6 +68,28 @@ function enviaMensagem(media, turma){
 enviaMensagem (media1, 'turma A')
 enviaMensagem (media2, 'turma B')
 
-//                                12
-// escopos
-
+//                                BOOLEAN
+// 
+function marcarReprovado(aluno){
+    
+        aluno.reprovado = false
+        if(aluno.nota < 5){
+            aluno.reprovado = true
+        }
+    
+    
+}
+marcarReprovado(alunosDaTurmaA)
+function enviarMensagemReprovado(aluno){
+    if(aluno.reprovado){
+        console.log(`O aluno ${aluno.nome} esta reprovado`)
+    }
+}
+function alunoReprovado(alunos){
+    for( let aluno of alunos){
+        marcarReprovado(aluno)
+        enviarMensagemReprovado(aluno)
+    }
+}
+alunoReprovado(alunosDaTurmaA)
+alunoReprovado(alunosDaTurmaB)
