@@ -75,9 +75,7 @@ header div a:hover{
     text-align: center;
 }
 
-.card-image-container img{
-    
-}
+
 .card-content,
 .card-info{
     display: grid;
