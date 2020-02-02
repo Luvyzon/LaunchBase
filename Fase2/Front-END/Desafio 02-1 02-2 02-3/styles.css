@@ -61,3 +61,82 @@ header div a:hover{
     color: yellowgreen;
     font-size: 30px;
 }
+
+/* ===== CARD ========*/
+.cards{
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.card{
+    background-color: gray;
+    text-align: center;
+}
+
+.card-image-container img{
+    
+}
+.card-content,
+.card-info{
+    display: grid;
+    padding: 24px;
+    grid-template-columns: 1fr 1fr;
+    color: chartreuse;
+}
+.card-price{
+    background-color: var(--color-rocket);
+    filter: brightness(90%);
+    padding: 5px 20px;
+    border-radius: 15%;
+}
+/* ======== MODAL ===========*/
+.modal-overlay{
+    background-color: rgba(0, 0, 0, 70%);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    opacity: 0;
+    visibility: hidden;
+}
+.modal{
+    background-color: white;
+    width: 90%;
+    height: 90%;
+    margin: 5vh auto;
+    position: relative;
+}
+.modal .close-modal{
+    color: black;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+}
+.modal .maximize-modal{
+    color: black;
+    position: absolute;
+    right: 26px;
+    top: 8px;
+    cursor: pointer;
+}
+/*====== MODAL.ACTIVE =======*/
+.modal-overlay.active{
+    opacity: 1;
+    visibility: visible;
+}
+iframe{
+    width: 90%;
+    height: 100%;
+    
+    position: absolute;
+}
+/*=======MODAL.MAXIMIZE=======*/
+.modal.maximize{
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+}
