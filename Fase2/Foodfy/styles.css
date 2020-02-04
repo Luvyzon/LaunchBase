@@ -1,0 +1,94 @@
+
+body{
+    width: 1400px;
+    height: 1106px;
+    margin-left: 230px;
+    margin-right: 230px;
+}
+/*=======HEADER========*/
+header{  
+    height: 93px;
+    width: 100%;
+    padding-top: 30px;
+}
+header a{
+    text-decoration: none;
+    color: #111;
+    padding: 30px;
+}
+.homebuttom{
+    font-size: x-large;
+    margin-right: 90px;
+}
+.aboutbuttom{
+    
+    font-size: 16px;
+    line-height: 19px;
+    font-family: 'Roboto',cursive;
+}
+.recipesbuttom{
+    font-size: 16px;
+    line-height: 19px;
+    font-family: 'Roboto', cursive;
+}
+/*=======info-home=======*/
+.info-home{
+    width: 100%;
+    height: 366px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #FBDFDB;
+    border-radius: 30px;
+    padding-left: 60px;
+}
+
+.title-info{
+    font-size: 32px;
+    font-family: "Roboto", bold;
+    line-height: 38px;
+    width: 305px;
+    height: 38px;
+    margin-top: 117px;
+    margin-bottom: 10px;
+}
+.desc-info{
+    font-family: "Roboto",cursive;
+    font-size: 18px;
+    line-height: 28px;
+}
+.info-home-image{
+    width: 216px;
+    height: 300px;
+    margin-top: 66px;
+    margin-right: 100px;
+    margin-left: 248px;
+}
+/*======most-access=====*/
+.most-access p{
+    font-family: "Roboto";
+    font-size: 24px;
+    margin-top: 50px;
+}
+/*=====CARD ======*/
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.card img{
+    width: 300px;
+    height: 140px;
+    border-radius: 15px;
+}
+#titulo-receita{
+    font-family: "Roboto-Regular";
+    font-size: 18px;
+    line-height: 21px;
+    color: #111;
+}
+
+.card #autor-receita{
+    font-family: "Roboto-Regular";
+    font-size: 14px;
+    line-height: 18px;
+}
