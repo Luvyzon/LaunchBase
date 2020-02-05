@@ -3,8 +3,9 @@
     <head>
         <title>Foodfy</title>
         <link rel="stylesheet" href="styles.css">
-        <script src="scripts.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     </head>
     <body>
         <header>
@@ -12,7 +13,7 @@
             <a href="sobre.html" class="menubuttom" id="aboutbuttom">Sobre</a>
             <a href="receitas.html" class="menubuttom" id="recipesbuttom">Receitas</a>
         </header>
-        
+       <div class="body"> 
         <div class="info-home">
             
             <div class="info-home-text">
@@ -32,7 +33,7 @@
             </div>
             <section class="home-section">
                 <div class="cards">
-                    <div class="card">
+                    <div class="card" id="burger" >
                         <img src="images/burger.png" alt="burger">
                         <p class="titulo_receita">Triplo bacon burger</p>
                         <p class="autor_receita">por Jorge Relato</p>
@@ -64,7 +65,23 @@
                     </div>
                 </div>
             </section>
+            
         </div>
+        </div>
+        <div class="modal-overlay">
+            <div class="modal">
+                <a class="close-modal">
+                    <i class="material-icons">close</i>
+                </a>
+                <div class="modal-content">
+                    <img src="" alt="receitaImg">
+                    
+                </div>
+            </div>
+            
+        
+        </div>
+        <script src="scripts.js"></script>
         <footer>
             <p class="footer-info">Todos os direitos reservados, receitas Foodfy</p>
         </footer>
