@@ -1,0 +1,17 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+        <div id="wraper">
+            <img src="{{about.avatar_url}}" alt="Matheus">
+            <h1>{{about.name}}</h1>
+            <h2>{{about.role}}</h2>
+            <p>{{about.description}}</p>
+        </div>
+        <div id = "redes">
+        {% for link in about.links %}
+            <a href="{{link.url}}" target="-blank">{{link.name}}</a>
+        {% endfor %}
+        </div>
+
+{% endblock %}
