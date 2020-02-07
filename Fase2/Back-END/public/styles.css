@@ -122,6 +122,14 @@ iframe{
 }
 
 /* ========== FEATURED ============*/
+.featured-wraper.card_image_container{
+    position: relative;
+}
 .featured{
-    background: #237;
+    background: #090;
+    position: absolute;
+    padding: 2px 10px;
+    right: 5px;
+    border-radius: 15px;
+    top: -6px;
 }
