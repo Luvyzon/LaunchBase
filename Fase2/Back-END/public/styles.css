@@ -66,6 +66,7 @@ header div a:hover{
 }
 .card{
     background-color: gray;
+    cursor: pointer;
 }
 
 .card_image_container img{
@@ -118,4 +119,9 @@ iframe{
     height: 100%;
     
     position: absolute;
+}
+
+/* ========== FEATURED ============*/
+.featured{
+    
 }

@@ -1,6 +1,5 @@
 {% extends "layout.njk" %}
-
-{% block content %}
+{% block content%}
         <div id="wraper">
             <h1>Aulas</h1>
         </div>
@@ -9,6 +8,9 @@
             <div class="card" id="{{item.id}}">
                 <div class="card_image_container">
                     <img src="https://img.youtube.com/vi/{{item.id}}/maxresdefault.jpg" alt="Video Aula">
+                    {% if item.featured %}
+                        <div class="featured">Featured</div>
+                    {% endif %}
                 </div>
                 <div class="card_content">
                     <p>{{item.title}}</p>
@@ -33,4 +35,4 @@
             </div>
         </div>
         <script src="scripts.js"></script>
-        {% endblock %}
+{% endblock %}

@@ -3,7 +3,8 @@ module.exports = [
         id:"qb8yXWFRROg",
         title:"Comecei a receber propostas de emprego MUITO boas por um simples motivo",
         duration: "10min",
-        price: "free"
+        price: "free",
+        featured: true
     },
     {
         id:"qb8yXWFRROg",
@@ -15,7 +16,8 @@ module.exports = [
         id:"qb8yXWFRROg",
         title:"Comecei a receber propostas de emprego MUITO boas por um simples motivo",
         duration: "10min",
-        price: "free"
+        price: "free",
+        featured: true
     },
     {
         id:"qb8yXWFRROg",
@@ -27,7 +29,8 @@ module.exports = [
         id:"qb8yXWFRROg",
         title:"Comecei a receber propostas de emprego MUITO boas por um simples motivo",
         duration: "10min",
-        price: "free"
+        price: "free",
+        featured: true
     },
     {
         id:"qb8yXWFRROg",
