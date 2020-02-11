@@ -133,3 +133,18 @@ iframe{
     border-radius: 15px;
     top: -6px;
 }
+
+/* === page video === */
+.video{
+    margin: 0 auto;
+    max-width: 800px;
+    
+}
+.card_video_container {
+    position: relative;
+    padding-top: 30%;
+}
+.card_video_container iframe{
+    width: 100%;
+    position: static;
+}

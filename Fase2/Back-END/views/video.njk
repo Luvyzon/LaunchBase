@@ -3,14 +3,12 @@
         <div id="wraper">
             <h1>Aulas</h1>
         </div>
-        <section class="cards">
-        {% for item in items %}  
+        <section class="video">
+        
             <div class="card" id="{{item.id}}">
-                <div class="card_image_container {{ 'featured-wraper' if item.featured}}">
-                    <img src="https://img.youtube.com/vi/{{item.id}}/maxresdefault.jpg" alt="Video Aula">
-                    {% if item.featured %}
-                        <div class="featured">Featured</div>
-                    {% endif %}
+                <div class="card_video_container">
+                    <iframe src="https://www.youtube.com/embed/{{item.id}}"></iframe>
+                    
                 </div>
                 <div class="card_content">
                     <p>{{item.title}}</p>
@@ -21,9 +19,8 @@
                 </div>
                 
             </div> 
-        {% endfor %}
+        
 
         </section>
-        
-        <script src="scripts.js"></script>
+     
 {% endblock %}
