@@ -1,26 +1,8 @@
-const modalOverlay = document.querySelector(".modal-overlay")
-const cards = document.querySelectorAll(".card")
-const modal = document.querySelector(".modal-content")
+const cards = document.querySelectorAll('.card')
 
-
-for(let card of cards){
-    card.addEventListener("click", function(){
-        const receitaId = card.getAttribute("id")
-
-      
-
-        modalOverlay.classList.add('active')
-        modal.classList.add('active')
-        
-        
-        modal.querySelector("img").src = `images/${receitaId}.png`;
-        
-       
-    })
+for (let card of cards) {
+  card.addEventListener('click', function () {
+    const receitaId = card.getAttribute('id')
+    window.location.href = `/recepts?id=${receitaId}`
+  })
 }
-
-document.querySelector(".close-modal").addEventListener("click", function(){
-    modalOverlay.classList.remove('active')
-    modal.classList.remove('active')
-    modal.querySelector("img").src = ""
-})

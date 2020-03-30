@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-
+<title>Foodfy</title>
 {% endblock %}
 
 {% block content %}
@@ -23,41 +23,20 @@
             <div class="most-access">
             <p>Mais acessadas</p>
             </div>
-            <section class="home-section">
-                <div class="cards">
-                    <div class="card" id="burger" >
-                        <img src="images/burger.png" alt="burger">
-                        <p class="titulo_receita">Triplo bacon burger</p>
-                        <p class="autor_receita">por Jorge Relato</p>
-                    </div>
-                    <div class="card">
-                        <img src="images/pizza.png" alt="pizza">
-                        <p class="titulo_receita">Pizza 4 estações</p>
-                        <p class="autor_receita">por Fabiana Melo</p>
-                    </div>
-                    <div class="card">
-                        <img src="images/espaguete.png" alt="espaguete">
-                        <p class="titulo_receita">Espaguete ao alho</p>
-                        <p class="autor_receita">por Júlia Kinoto</p>
-                    </div>
-                    <div class="card">
-                        <img src="images/lasanha.png" alt="lasanha">
-                        <p class="titulo_receita">Lasanha mac n'cheese</p>
-                        <p class="autor_receita">por Juliano Vieira</p>
-                    </div>
-                    <div class="card">
-                        <img src="images/doce.png" alt="doce">
-                        <p id="titulo_receita">Docinhos pão-do-céu</p>
-                        <p class="autor_receita">por Ricardo Golvea</p>
-                    </div>
-                    <div class="card">
-                        <img src="images/asinhas.png" alt="asinhas">
-                        <p class="titulo_receita">Asinhas de frango ao barbecue</p>
-                        <p class="autor_receita">por Vania Steroski</p>
-                    </div>
-                </div>
-            </section>
+            <section class="cards">
+        {% for item in items %}
+            <div class="card" id="{{item.id}}">
             
+            
+            <img src="{{item.image}}" alt="{{item.id}}">
+            <p class="titulo_receita">{{item.title}}</p>
+            <p class="autor_receita">{{item.author}}</p>
+        
+           
+            </div>
+         {% endfor %}
+    
+        </section>
         </div>
         </div>
 
