@@ -5,11 +5,11 @@ module.exports = [
     title: 'Triplo bacon burger',
     author: 'Jorge Relato',
     ingredients: [
-      '3 kg de carne moída (escolha uma carne magra e macia)<br>',
-      '300 g de bacon moído<br>',
-      '1 ovo<br>',
-      '3 colheres (sopa) de farinha de trigo<br>',
-      '3 colheres (sopa) de tempero caseiro: feito com alho, sal, cebola, pimenta e cheiro verde processados no liquidificador<br>',
+      '3 kg de carne moída (escolha uma carne magra e macia)',
+      '300 g de bacon moído',
+      '1 ovo',
+      '3 colheres (sopa) de farinha de trigo',
+      '3 colheres (sopa) de tempero caseiro: feito com alho, sal, cebola, pimenta e cheiro verde processados no liquidificador',
       '30 ml de água gelada'
     ],
     preparation: [
@@ -49,7 +49,7 @@ module.exports = [
       'Cubra a massa com mussarela ralada, tomate e orégano a gosto.',
       'Leve novamente ao forno até derreter a mussarela.'
     ],
-    information: 'Pizza de liquidificador é uma receita deliciosa e supersimples de preparar. Feita toda no liquidificador, ela é bem prática para o dia a dia. Aqui no TudoGostoso você também encontra diversas delícias práticas feitas no liquidificador: massa de panqueca, torta de frango de liquidificador, pão de queijo de liquidificador, bolo de banana, bolo de chocolate e muito mais!'
+    information: 'Pizza de liquidificador é uma receita deliciosa e supersimples de preparar. Feita toda no liquidificador, ela é bem prática para o dia a dia. Aqui no Tudo Gostoso você também encontra diversas delícias práticas feitas no liquidificador: massa de panqueca, torta de frango de liquidificador, pão de queijo de liquidificador, bolo de banana, bolo de chocolate e muito mais!'
   },
   {
     id: 'asinhas',

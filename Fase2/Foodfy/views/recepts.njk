@@ -23,7 +23,11 @@
 </div>
 <div class="recipelist">
 <div class="recipelist1">
-<p>{{recipe.ingredients}}</p>
+<ul>
+{% for item in recipe.ingredients %}
+<li><p>{{item}}</p></li>
+{% endfor %}
+</ul>
 </div>
 </div>
 <div class="recipehide">
@@ -33,7 +37,11 @@
 </div>
 <div class="recipelist">
 <div class="recipelist2">
-<p>{{recipe.preparation}}</p>
+{% for item in recipe.preparation %}
+<ul>
+<li><p>{{item}}</p></li>
+</ul>
+{% endfor %}
 </div>
 </div>
 
