@@ -22,6 +22,7 @@ server.get('/sobre', function (_req, res) {
 server.get('/receitas', function (_req, res) {
   return res.render('receitas', { items: recipes })
 })
+
 server.get('/recepts', function (req, res) {
   const id = req.query.id
   const recipe = recipes.find(function (recipe) {
@@ -34,15 +35,17 @@ server.get('/recepts', function (req, res) {
   }
   return res.render('recepts', { recipe })
 })
+
 /*
 server.get('/recepts/:index', function (req, res) {
-  const recipe = [recipes]// Array de receitas carregadas do data.js
-  const recipeIndex = req.params.index
 
-  console.log(recipes[recipeIndex])
-  return res.render('recepts')
+  const id = req.params.id
+  const recipeIndex = recipes[id]
+ 
+  return res.render('recepts', { recipe: recipes[recipeIndex]})
 })
 */
+
 server.listen(5000, function () {
   console.log('server is running!')
 })

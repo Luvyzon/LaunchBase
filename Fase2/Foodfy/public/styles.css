@@ -157,6 +157,21 @@ header a{
 .recipelist1{
     display: none;
 }
+.recipelist1show{
+    display: block;
+}
+.recipelist2{
+    display: none;
+}
+.recipelist2show{
+    display: block;
+}
+.recipelist3{
+    display: none;
+}
+.recipelist3show{
+    display: block;
+}
 .recipelist p{
     font-family: "Roboto-Regular";
     font-size: 18px;
