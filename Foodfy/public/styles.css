@@ -149,7 +149,18 @@ header a{
     font-size: 24px;
     font-family: "Roboto-Bold";
 }
-.recipeshow{
+.recipeshow1{
+    font-size: 12px;
+    font-family: "Roboto-Bold";
+    color: #999;
+    
+}
+.recipeshow2{
+    font-size: 12px;
+    font-family: "Roboto-Bold";
+    color: #999;
+}
+.recipeshow3{
     font-size: 12px;
     font-family: "Roboto-Bold";
     color: #999;
