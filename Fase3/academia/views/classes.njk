@@ -1,0 +1,29 @@
+{% extends "layout.njk" %}
+{% block content%}
+        <div id="wraper">
+            <h1>Aulas</h1>
+        </div>
+        <section class="cards">
+        {% for item in items %}  
+            <div class="card" id="{{item.id}}">
+                <div class="card_image_container {{ 'featured-wraper' if item.featured}}">
+                    <img src="https://img.youtube.com/vi/{{item.id}}/maxresdefault.jpg" alt="Video Aula">
+                    {% if item.featured %}
+                        <div class="featured">Featured</div>
+                    {% endif %}
+                </div>
+                <div class="card_content">
+                    <p>{{item.title}}</p>
+                </div>
+                <div class="card_info">
+                    <p>{{item.duration}}</p>
+                    <p class="card_price">{{item.price}}</p> 
+                </div>
+                
+            </div> 
+        {% endfor %}
+
+        </section>
+        
+        <script src="scripts.js"></script>
+{% endblock %}
