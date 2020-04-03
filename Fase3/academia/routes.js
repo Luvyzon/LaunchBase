@@ -13,7 +13,7 @@ routes.get('/instructors', function(req, res){
 
 routes.get('/members', function(req, res){
 
-    return res.render('/members')
+    return res.render('members')
 })
 
 module.exports =  routes

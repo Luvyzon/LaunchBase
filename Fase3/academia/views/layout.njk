@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Matheus Luvison</title>
-        
+        <title>Gym Admin</title>
         <link rel="stylesheet" href="styles.css">
+        {% block head %}
+
+      {% endblock %}
     </head>
     <body>
         <header>
             <div class="links">
-                <a href="/">LUVYTEK</a>
-                <a href="/classes">Aulas</a>
+                <a href="/instructors">INSTRUCTORS</a>
+                <a href="/members">MEMBERS</a>
             </div>
         </header>
         {% block content %}

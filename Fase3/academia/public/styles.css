@@ -1,10 +1,42 @@
 :root{
-    --color-rocket: #7159c1;
+    --primary-color: #7159c1;
 }
-@import "https://fonts.googleapis.com/css?family=Bangers&display=swap";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 * {
     margin: 0px;   
     padding: 0px;   
     border: 0px;
     
+}
+/*======== HEADER ==========*/
+header{
+    background-color: white;
+    text-align: center;
+    height: 60px;
+}
+header a{
+    text-decoration: none;
+  
+}
+.links{
+    padding-top: 25px;
+}
+.links a{
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: #444;
+}
+.links a + a {
+    padding-left: 15px;
+}
+.links a:hover{
+    transition: all 200ms;
+    color: var(--primary-color)
+}
+.links a.active{
+    color: var(--primary-color);
+}
+/*======== BODY =========*/
+body{
+    background-color: var(--primary-color);
 }
