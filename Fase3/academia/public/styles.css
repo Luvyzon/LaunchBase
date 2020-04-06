@@ -54,3 +54,32 @@ header a{
 body{
     background-color: var(--primary-color);
 }
+
+/*===== CARDS ====*/
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 800px;
+    height: 400px;
+    background-color: white;
+    margin: 15px auto;
+    box-shadow: 1px 6px 12px -3px #6540b2;
+    animation: up 700ms ease-out;
+}
+@keyframes up{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+    }
+}
+.avatar{
+   
+
+}
+
+.details{
+    background-color: white;
+}
