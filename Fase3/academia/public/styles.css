@@ -1,5 +1,6 @@
 :root{
     --primary-color: #7159c1;
+    --secondary-color: #F7DF1E;
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 * {
@@ -82,4 +83,38 @@ body{
 
 .details{
     background-color: white;
+    padding: 32px;
+}
+.details .item{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 16px 0;
+}
+.details .item:last-child{
+    border: none;
+}
+.details h3,
+.details .item div:nth-child(1){
+    color: #aaa;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+.details .item div:nth-child(2){
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.details h3{
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 25px;
+}
+.details .item span{
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    margin-top: 8px;
+    display: inline-block;
+    text-transform: uppercase;
 }
