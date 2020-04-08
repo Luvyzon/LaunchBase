@@ -1,6 +1,6 @@
 :root{
-    --primary-color: #00d6f0;
-    --header-color: #999;
+    --header-color: #00d6f0;
+    --primary-color: #999;
 
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -19,6 +19,9 @@ header{
 header a{
     text-decoration: none;
   
+}
+body{
+    background-color: var(--primary-color);
 }
 .links{
     padding-top: 15px;
@@ -52,7 +55,62 @@ header a{
     font-weight: bold;
     color: var(--primary-color);
 }
-/*======== BODY =========*/
-body{
+/*======== CONTENT =========*/
+
+.card{
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    margin: 15px auto;
+    width: 800px;
+    height: 400px;
+    animation: up 800ms ease-out;
+    box-shadow: 2px 8px 14px -5px #555;
+}
+@keyframes up {
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+    }
+}
+.details{
+    background-color: #aaa;
+    padding: 32px;
+}
+.details .item{
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding: 8px 0;
+}
+.details .item:last-child{
+    border: none;
+}
+.details .item div:first-child{
+    border-top: ridge;
+}
+.details h3,
+.details .item div:nth-child(1){
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: normal;
+    color: var(--header-color);
+    letter-spacing: 1.5px;
+}
+.details .item div:nth-child(2){
+    font-size: 16px;
+    font-weight: bold;
+}
+.details h3{
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+.details .item span{
+    padding: 8px 16px;
     background-color: var(--primary-color);
+    border-radius: 8px;
+    margin-top: 8px;
+    display: inline-block;
+    text-transform: uppercase;
 }
