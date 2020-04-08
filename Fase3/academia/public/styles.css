@@ -67,7 +67,7 @@ body{
     box-shadow: 1px 6px 12px -3px #6540b2;
     animation: up 700ms ease-out;
 }
-@keyframes up{
+@keyframes up {
     from{
         opacity: 0;
         transform: translateY(15px);
@@ -75,10 +75,6 @@ body{
     to{
         opacity: 1;
     }
-}
-.avatar{
-   
-
 }
 
 .details{
@@ -109,6 +105,7 @@ body{
     font-weight: bold;
     color: var(--primary-color);
     font-size: 25px;
+    text-transform: uppercase;
 }
 .details .item span{
     padding: 8px 16px;
