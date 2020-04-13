@@ -1,0 +1,31 @@
+{
+  "instructors": [
+    {
+      "id": 1,
+      "name": "matheus antonio",
+      "avatar_url": "http://google.com",
+      "birth": 858384000000,
+      "gender": "M",
+      "services": "Kung fu, Mway Thay",
+      "created_at": 1586819250693
+    },
+    {
+      "id": 2,
+      "name": "Michel Jose",
+      "avatar_url": "http://facebook.com",
+      "birth": 545961600000,
+      "gender": "M",
+      "services": "crossfit, aerobica",
+      "created_at": 1586819274552
+    },
+    {
+      "id": 3,
+      "name": "Micheli Maria",
+      "avatar_url": "http://youtube.com",
+      "birth": 685584000000,
+      "gender": "F",
+      "services": "Pilates",
+      "created_at": 1586819313499
+    }
+  ]
+}

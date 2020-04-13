@@ -60,7 +60,8 @@ body{
 .cards{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 800px;
+    width: 90%;
+    max-width: 800px;
     height: 400px;
     background-color: white;
     margin: 15px auto;
@@ -114,4 +115,32 @@ body{
     margin-top: 8px;
     display: inline-block;
     text-transform: uppercase;
+}
+/* FORM */
+input{
+    width: 100%;
+    outline: none;
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: bold;
+}
+input[type="radio"]{
+    width: initial;
+    margin-right: 5px;
+}
+input::placeholder{
+    font-size: 16px;
+    font-weight: normal;
+}
+button[type="submit"]{
+    padding: 8px 32px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    margin-top:32px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: white;
 }
