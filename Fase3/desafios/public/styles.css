@@ -61,7 +61,8 @@ body{
     display: grid;
     grid-template-columns: 4fr 6fr;
     margin: 15px auto;
-    width: 800px;
+    width: 90%;
+    max-width: 800px;
     height: 400px;
     animation: up 800ms ease-out;
     box-shadow: 2px 8px 14px -5px #555;
@@ -100,6 +101,8 @@ body{
 .details .item div:nth-child(2){
     font-size: 16px;
     font-weight: bold;
+    margin-right: 4px;
+
 }
 .details h3{
     font-weight: bold;
@@ -113,4 +116,32 @@ body{
     margin-top: 8px;
     display: inline-block;
     text-transform: uppercase;
+ 
+}
+input{
+    width: 100%;
+    outline: none;
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: bold;
+}
+input[type="radio"]{
+    width: initial;
+    margin-right: 5px;
+}
+input::placeholder{
+    font-size: 16px;
+    font-weight: normal;
+}
+button[type="submit"]{
+    padding: 8px 32px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    margin-top:32px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: white;
 }

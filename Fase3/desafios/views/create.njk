@@ -1,0 +1,63 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+<title>Cadastrar Professor</title>
+{% endblock head %}
+
+{% block content %}
+<form class="card" method='POST' action="/teatchers">
+    
+    <section class="avatar"></section>
+
+    <section class="details">
+       
+        <h3>Novo Professor</h3>
+       
+        <div class="item">
+        <div>Avatar URL</div>
+        <input type="url" name="avatar_url" placeholder="http://...">
+        </div>
+        
+        <div class="item">
+        <div>Nome do Professor</div>
+        <input type="text" name="name" placeholder="José da Silva">
+        </div>
+
+        <div class="item">
+        <div>Data de Nascimento</div>
+        <input type="date" name="birth">
+        </div>
+
+        <div class="item">
+        <div>SEXO</div>
+        <span><input type="radio" name="gender" value="M" select>MASCULINO</span>
+        <span><input type="radio" name="gender" value="F">FEMININO</span>
+        </div>
+
+        <div class="item">
+        <div>Grau de Escolaridade</div>
+        <select name="ed_level">
+        <option value="emc" select>Ensino Medio Completo</option>
+        <option value="esc">Ensino Superior Completo</option>
+        <option value="master">Mestrado</option>
+        <option value="doctor">Doutorado</option>
+        </select>
+        </div>
+
+        <div class="item">
+        <div>Tipo de aula</div>
+        <span><input type="radio" name="type_lesson" value="P" select>Presencial</span>
+        <span><input type="radio" name="type_lesson" value="EAD">À distância</span>
+        </div>
+
+        <div class="item">
+        <div>Area de Atuação</div>
+        <input type="text" name="area" placeholder="Separe os itens com virgula">
+        </div>
+        <button type="submit">Salvar</button>
+       
+    
+    </section>
+
+    </form>
+{% endblock content %}
