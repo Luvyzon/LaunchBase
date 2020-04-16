@@ -26,6 +26,15 @@
       "gender": "F",
       "services": "Pilates",
       "created_at": 1586819313499
+    },
+    {
+      "id": 4,
+      "name": "carlito teves",
+      "avatar_url": "http://google.com",
+      "birth": 1106784000000,
+      "gender": "M",
+      "services": "Pilates",
+      "created_at": 1587058703327
     }
   ]
 }
