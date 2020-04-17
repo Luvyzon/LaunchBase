@@ -1,0 +1,119 @@
+<div class="item">
+        <div>Avatar URL</div>
+        <input 
+            type="url" 
+            name="avatar_url" 
+            placeholder="http://..."
+            value="{{teatcher.avatar_url}}"
+            >
+        </div>
+        
+        <div class="item">
+        <div>Nome do Professor</div>
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="José da Silva"
+            value="{{teatcher.name}}">
+        </div>
+
+        <div class="item">
+        <div>Data de Nascimento</div>
+        <input 
+        type="date" 
+        name="birth"
+        value="{{ teatcher.birth }}">
+        </div>
+
+        <div class="item">
+        <div>SEXO</div>
+        <span>
+            <input 
+                type="radio" 
+                name="gender" 
+                value="M"
+                {% if(teatcher.gender == "M") %}
+                    checked
+                {% endif%}
+                >MASCULINO
+        </span>
+        <span>
+            <input 
+                type="radio" 
+                name="gender" 
+                value="F"
+                {% if(teatcher.gender == "F") %}
+                    checked
+                {% endif%}
+                >FEMININO
+        </span>
+        </div>
+
+        <div class="item">
+        <div>Grau de Escolaridade</div>
+        <select name="ed_level">
+        <option 
+            value="emc" 
+            {% if(teatcher.ed_level == "emc") %}
+                selected
+            {% endif %}
+            >Ensino Medio Completo
+        </option>
+        <option 
+            value="esc"
+            {% if(teatcher.ed_level == "esc") %}
+                selected
+            {% endif %}
+            
+            >Ensino Superior Completo
+        </option>
+        <option 
+            value="master"
+            {% if(teatcher.ed_level == "master") %}
+                selected
+            {% endif %}
+            >Mestrado
+        </option>
+        <option 
+            value="doctor"
+            {% if(teatcher.ed_level == "doctor") %}
+                selected
+            {% endif %}
+            >Doutorado
+        </option>
+        </select>
+        </div>
+
+        <div class="item">
+        <div>Tipo de aula</div>
+        <span>
+            <input 
+                type="radio" 
+                name="type_lesson" 
+                value="P"
+                {% if(teatcher.type_lesson == "P")%}
+                checked
+                {% endif%}
+            >Presencial
+        </span>
+        <span>
+            <input 
+                type="radio" 
+                name="type_lesson" 
+                value="EAD"
+                {% if(teatcher.type_lesson == "EAD")%}
+                checked
+                {% endif%}
+            >À distância
+        </span>
+        </div>
+
+        <div class="item">
+        <div>Area de Atuação</div>
+        <input 
+            type="text" 
+            name="area" 
+            placeholder="Separe os itens com virgula" 
+            value="{{teatcher.area}}">
+        </div>
+        <button type="submit">Salvar</button>

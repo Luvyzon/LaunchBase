@@ -14,7 +14,7 @@ routes.get('/teatchers/create', function(req, res){
 })
 routes.post('/teatchers', teatchers.post)
 routes.get('/teatchers/:id', teatchers.show)
-
+routes.get('/teatchers/:id/edit', teatchers.edit)
 routes.get('/students', function(req, res){
 
 

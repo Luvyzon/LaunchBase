@@ -1,5 +1,7 @@
 const fs = require("fs")
 const data = require("./data.json")
+const { age, graduation, type_lesson, date } = require("./utils.js")
+const Intl = require("intl")
 // create
 exports.post = function(req,res){
 
@@ -40,5 +42,31 @@ exports.show = function(req, res){
     })
     if(!foundTeatcher) return res.send("Teatcher not found!")
 
-    return res.render('teatchers/show', {teatcher: foundTeatcher})
+    const teatcher = {
+        ...foundTeatcher,
+        age: age(foundTeatcher.birth),
+        ed_level: graduation(foundTeatcher.ed_level),
+        area: foundTeatcher.area.split(","),
+        type_lesson: type_lesson(foundTeatcher.type_lesson),
+        created_at: new Intl.DateTimeFormat("pt-BR").format(foundTeatcher.created_at)
+    }
+
+
+    return res.render('teatchers/show', {teatcher})
+}
+// edit
+exports.edit = function(req, res){
+    const {id} = req.params
+    const foundTeatcher = data.teatchers.find(function(teatcher){
+        return teatcher.id == id
+    })
+    if(!foundTeatcher) return res.send("Teatcher not found!")
+
+    const teatcher = {
+        ...foundTeatcher,
+        birth: date(foundTeatcher.birth)
+        
+    }
+
+    return res.render("teatchers/edit", {teatcher})
 }

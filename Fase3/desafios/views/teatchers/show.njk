@@ -20,7 +20,7 @@
         </div>
         <div class="item">
         <div>Idade</div>
-        <div>{{teatcher.birth}}</div>
+        <div>{{teatcher.age}}</div>
         </div>
         <div class="item">
         <div>formação</div>
@@ -28,16 +28,17 @@
         </div>
         <div class="item">
         <div>Tipo de aula</div>
-        <div>Presencial</div>
+        <div>{{ teatcher.type_lesson }}</div>
         </div>
         <div class="item">
         <div>acompanhamento</div>
-        <span>Filosofia</span>
-        <span>Sociologia</span>
+        {% for item in teatcher.area %}
+            <span>{{item}}</span>
+        {% endfor %}
         </div>
         <div class="item">
         <div>Desde</div>
-        <div>01/03/2012</div>
+        <div>{{teatcher.created_at}}</div>
         </div>
     
     </section>
