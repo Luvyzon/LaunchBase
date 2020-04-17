@@ -32,3 +32,13 @@ exports.post = function(req,res){
         return res.redirect("/teatchers")
     })
 }
+//show
+exports.show = function(req, res){
+    const {id} = req.params
+    const foundTeatcher = data.teatchers.find(function(teatcher){
+        return teatcher.id == id
+    })
+    if(!foundTeatcher) return res.send("Teatcher not found!")
+
+    return res.render('teatchers/show', {teatcher: foundTeatcher})
+}

@@ -3,8 +3,17 @@ const routes = express.Router()
 const teatchers = require("./teatchers.js")
 
 routes.get('/', function(req, res){
-    return res.redirect('/students')
+    return res.redirect('/teatchers')
 })
+routes.get('/teatchers', function(req, res){
+
+    return res.render('teatchers/index')
+})
+routes.get('/teatchers/create', function(req, res){
+    return res.render("teatchers/create")
+})
+routes.post('/teatchers', teatchers.post)
+routes.get('/teatchers/:id', teatchers.show)
 
 routes.get('/students', function(req, res){
 
@@ -12,13 +21,7 @@ routes.get('/students', function(req, res){
     return res.render('students')
 })
 
-routes.get('/teatchers', function(req, res){
 
-    return res.render('teatchers')
-})
-routes.get('/teatchers/create', function(req, res){
-    return res.render("create")
-})
-routes.post('/teatchers', teatchers.post)
+
 
 module.exports =  routes
