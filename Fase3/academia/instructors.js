@@ -99,6 +99,8 @@ exports.put = function(req, res){
         return res.redirect(`/instructors/${id}`)
     })
 }
-
-
 // delete
+exports.delete = function(req,res){
+    
+    return res.redirect('/instructors')
+}
