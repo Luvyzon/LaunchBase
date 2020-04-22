@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<form class="cards" method="POST" action="/instructors">
+<form class="cards" method="POST" action="/instructors?_method=PUT">
     <section 
     class="avatar" ></section>
     <section class="details">
@@ -15,7 +15,8 @@
         <h3>editar instrutor</h3>
         
         {% include 'instructors/fields.njk' %}
-      
+        <input type="hidden" name="id" value="{{instructor.id}}">
+      <button type='submit'>Salvar alteração</button>
     </section>
     </form>
 
