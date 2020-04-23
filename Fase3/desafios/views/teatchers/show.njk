@@ -19,6 +19,10 @@
         <div>{{ teatcher.name }}</div>
         </div>
         <div class="item">
+        <div>Sexo</div>
+        <div>{{ "Masculino" if teatcher.gender == "M" else "Feminino" }}</div>
+        </div>
+        <div class="item">
         <div>Idade</div>
         <div>{{teatcher.age}}</div>
         </div>
@@ -40,7 +44,8 @@
         <div>Desde</div>
         <div>{{teatcher.created_at}}</div>
         </div>
-    
+
+        <a href="/teatchers/{{teatcher.id}}/edit">EDITAR</a>
     </section>
 
     </div>

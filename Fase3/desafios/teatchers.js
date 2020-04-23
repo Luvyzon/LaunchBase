@@ -70,3 +70,46 @@ exports.edit = function(req, res){
 
     return res.render("teatchers/edit", {teatcher})
 }
+// put
+exports.put = function(req, res){
+    const {id} = req.body
+    let index = 0
+    
+    const foundTeatcher = data.teatchers.find(function(teatcher, foundIndex){
+        if(id == teatcher.id){
+            index = foundIndex
+            return true
+        }
+    })
+    
+    if(!foundTeatcher) return res.send("Teatcher not found!")
+
+     const teatcher ={
+         ...foundTeatcher,
+         ...req.body,
+         birth: Date.parse(req.body.birth)
+     }
+     data.teatchers[index] = teatcher
+
+     fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
+         if(err) return res.send("Write file Error")
+         return res.redirect(`/teatchers/${id}`)
+     })
+
+    
+}
+//delete
+exports.delete = function(req, res){
+    const {id} = req.body
+    const filteredTeatchers = data.teatchers.filter(function(teatcher){
+        return teatcher.id != id
+    })
+    data.teatchers = filteredTeatchers
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
+        if(err) return res.send("Write file Error")
+        
+    })
+    return res.redirect('/teatchers')
+
+}

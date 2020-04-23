@@ -5,18 +5,26 @@
 {% endblock head %}
 
 {% block content %}
-<form class="card" method='POST' action="/teatchers">
+<form class="card" method='POST' action="/teatchers?_method=PUT">
     
-    <section class="avatar"></section>
+    <section class="avatar" 
+             style="background: url({{instructor.avatar_url}}) no-repeat center center / cover"></section>
 
     <section class="details">
        
         <h3>Editar Professor</h3>
        
         {% include "teatchers/fields.njk" %}
-       
+       <input type="hidden" name="id" value="{{teatcher.id}}">
+       <div class="buttons">
+        <button type="submit">Salvar</button>
     
-    </section>
-
+    
     </form>
+    <form action="/teatchers?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{teatcher.id}}">
+        <button type="submit"style="background-color:#900">DELETAR</button>
+        </div>
+    </form>
+    </section>
 {% endblock content %}

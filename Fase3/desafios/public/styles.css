@@ -145,3 +145,7 @@ button[type="submit"]{
     text-transform: uppercase;
     color: white;
 }
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
