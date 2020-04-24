@@ -5,10 +5,7 @@ const teatchers = require("./teatchers.js")
 routes.get('/', function(req, res){
     return res.redirect('/teatchers')
 })
-routes.get('/teatchers', function(req, res){
-
-    return res.render('teatchers/index')
-})
+routes.get('/teatchers', teatchers.index)
 routes.get('/teatchers/create', function(req, res){
     return res.render("teatchers/create")
 })

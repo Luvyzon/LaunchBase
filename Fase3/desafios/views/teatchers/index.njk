@@ -5,43 +5,35 @@
 {% endblock head %}
 
 {% block content %}
-    <div class="card">
-    
-    <section class="avatar"style="background: url(https://source.unsplash.com/collection/1361815) no-repeat center center / cover">
-    
-    </section>
-    <section class="details">
-       
-        <h3>professor</h3>
-       
-        <div class="item">
-        <div>nome</div>
-        <div>Cleuder Streit</div>
-        </div>
-        <div class="item">
-        <div>Idade</div>
-        <div>43</div>
-        </div>
-        <div class="item">
-        <div>formação</div>
-        <div>Mestrado em Filosofia</div>
-        </div>
-        <div class="item">
-        <div>Tipo de aula</div>
-        <div>Presencial</div>
-        </div>
-        <div class="item">
-        <div>acompanhamento</div>
-        <span>Filosofia</span>
-        <span>Sociologia</span>
-        </div>
-        <div class="item">
-        <div>Desde</div>
-        <div>01/03/2012</div>
-        </div>
-    
-    </section>
-
+    <div class="card table-container">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Nome Completo</th>
+                    <th>Acompanhamento</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teatcher in teatchers %}
+                    <tr>
+                        <td>
+                        <span style="background-image:url({{teatcher.avatar_url}})"></span>
+                        {{teatcher.name}}
+                        </td>
+                        <td>
+                            {% for item in teatcher.area %}
+                                <span>{{item}}</span>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="/teatchers/{{teatcher.id}}" class="button_index">Ver</a>
+                            <a href="/teatchers/{{teatcher.id}}/edit" class="button_index">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-
+        
 {% endblock content %}
