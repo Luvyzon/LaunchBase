@@ -5,40 +5,32 @@
 {% endblock head %}
 
 {% block content %}
-    <div class="cards">
-    <section 
-    class="avatar" 
-    style="background: url(https://source.unsplash.com/collection/8353395) no-repeat center center / cover">
-
-    </section>
-    <section class="details">
-
-        <h3>DETALHES</h3>
-        <div class="item">
-            <div>INSTRUTOR</div>
-            <div>Guilherme Saraiva</div>
-        </div>
-        <div class="item">
-            <div>IDADE</div>
-            <div>29</div>
-        </div>
-        <div class="item">
-            <div>SEXO</div>
-            <div>Masculino</div>
-        </div>
-        <div class="item">
-            <div>ACOMPANHAMENTO</div>
-            <div>
-            <span>Musculação</span>
-            <span>Crossfit</span>
-            </div>
-        </div>
-        <div class="item">
-            <div>DESDE</div>
-            <div>2018</div>
-        </div>
-
-    </section>
-    </div>
-
+<div class="cards table-container">   
+    <table width="100%">
+        <thead>
+            <tr>
+                
+                <th>Instrutores</th>
+                <th>Acompanhamento</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instructor in instructors %}
+                <tr>
+                   
+                    <td>
+                        <span style="background-image:url({{instructor.avatar_url}})"></span>
+                        {{instructor.name}}</td>
+                    <td>{{instructor.services}}</td>
+                    <td>
+                        <a class="button_index" href="/instructors/{{instructor.id}}">Ver</a> / 
+                        <a class="button_index" href="/instructors/{{instructor.id}}/edit">Editar</a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    
+    </table>
+</div>
 {% endblock content %}

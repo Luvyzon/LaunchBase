@@ -156,3 +156,52 @@ button[type="submit"]{
     background-color: var(--primary-color);
     border-radius: 8px;
 }
+/* INDEX INSTRUCTORS */
+.table-container{
+    display: block;
+    padding: 40px;
+    box-sizing: border-box;
+}
+.table-container table{
+    border-spacing: 0;
+}
+.table-container thead tr th{
+    text-align: left;
+}
+th{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    color: #aaa;
+}
+td, th{
+    padding:8px;
+    border-bottom: 1px solid #d8d8d8
+}
+tbody tr:last-child td{
+    border-bottom: none;
+}
+tbody tr td:first-child{
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+}
+tbody tr td:first-child span{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+    box-shadow: 3px 1px 6px -4px;
+    border: 2px solid white;
+    background-position: center;
+    background-size: cover;
+}
+.button_index{
+    text-decoration: none;
+    padding: 8px 16px;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+}
