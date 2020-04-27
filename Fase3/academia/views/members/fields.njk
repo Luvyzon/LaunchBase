@@ -1,0 +1,69 @@
+<div class="item">
+    <div>Avatar URL</div>
+    <input 
+        type="url" 
+        name="avatar_url" 
+        placeholder="http://"
+        value="{{ member.avatar_url }}"
+        >
+</div>
+<div class="item">
+    <div>Nome</div>
+    <input 
+    type="text" 
+    name="name" 
+    placeholder="Joao Fernandes Abraão"
+    value="{{ member.name }}">
+</div>
+<div class="item">
+    <div>EMAIL</div>
+    <input 
+    type="email" 
+    name="email" 
+    value="{{ member.email }}">
+</div>
+<div class="item">
+    <div>Data de nascimento</div>
+    <input 
+    type="date" 
+    name="birth"
+    value="{{ member.birth }}">
+</div>
+<div class="item">
+    <div>SEXO</div>
+    <span> 
+        <input 
+            type="radio" 
+            name="gender" 
+            value="M" 
+            {% if member.gender == "M" %}
+                checked
+            {% endif %}
+        >MASCULINO
+    </span>
+    <span> 
+        <input 
+            type="radio" 
+            name="gender" 
+            value="F"
+            {% if member.gender == "F" %}
+                checked
+            {% endif %}
+        >FEMININO
+    </span>
+
+</div>
+<div class="item">
+    <div>Peso (kg)</div>
+    <input 
+    type="number" 
+    name="weight" 
+    value="{{ member.weight }}">
+</div>
+<div class="item">
+    <div>Altura (cm)</div>
+    <input 
+    type="number" 
+    name="height" 
+    value="{{ member.height }}">
+</div>

@@ -23,10 +23,20 @@
         
         
     </form>
-    <form action="/instructors?_method=DELETE" method="post">
+    <form id="form-delete" action="/instructors?_method=DELETE" method="post">
         <input type="hidden" name="id" value="{{instructor.id}}">
         <button type="submit" style="background-color:#900">DELETAR</button>
         </form>
+
+        <script>
+            const formDelete = document.querySelector("#form-delete")
+            formDelete.addEventListener("submit", function(event){
+                const confirmation = confirm("Deseja deletar?")
+                if(!confirmation){
+                event.preventDefault()
+                }
+            })   
+        </script>
     </section>
 </div>
 {% endblock content %}

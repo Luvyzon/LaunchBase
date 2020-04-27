@@ -1,0 +1,22 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+<title>CADASTRAR Membro</title>
+{% endblock head %}
+
+
+{% block content %}
+
+<form class="cards" method="POST" action="/members">
+    <section 
+    class="avatar" ></section>
+    <section class="details">
+
+        <h3>novo Membro</h3>
+        
+        {% include 'members/fields.njk' %}
+        <button type='submit'>Salvar</button>
+    </section>
+    </form>
+
+{% endblock content %}
