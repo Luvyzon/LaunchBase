@@ -4,7 +4,7 @@ const { age, graduation, type_lesson, date } = require("./utils.js")
 const Intl = require("intl")
 //index
 exports.index = function(req, res){
-
+    
     return res.render('teatchers/index', {teatchers: data.teatchers})
 }
 // create

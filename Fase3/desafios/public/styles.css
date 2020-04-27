@@ -96,7 +96,7 @@ body{
     font-size: 10px;
     font-weight: normal;
     color: var(--header-color);
-    letter-spacing: 1.5px;
+
 }
 .details .item div:nth-child(2){
     font-size: 16px;
@@ -198,6 +198,11 @@ tbody tr td:first-child span{
     background-color: var(--primary-color);
     border-radius: 8px;
 }
-td span{
-    letter-spacing: 0px;
+td:nth-child(2) span{
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    margin-top: 8px;
+    display: inline-block;
+    text-transform: uppercase;
 }

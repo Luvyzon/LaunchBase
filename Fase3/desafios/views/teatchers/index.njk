@@ -16,15 +16,18 @@
             </thead>
             <tbody>
                 {% for teatcher in teatchers %}
+                <input type="hidden" name="id" value="{{teatcher.id}}">
                     <tr>
                         <td>
                         <span style="background-image:url({{teatcher.avatar_url}})"></span>
                         {{teatcher.name}}
                         </td>
                         <td>
-                            {% for item in teatcher.area %}
-                                <span>{{item}}</span>
-                            {% endfor %}
+                        
+                        {% for item in teatcher.area.split(",") %}
+                            <span>{{item}}</span>
+                        {% endfor %}
+                        
                         </td>
                         <td>
                             <a href="/teatchers/{{teatcher.id}}" class="button_index">Ver</a>
