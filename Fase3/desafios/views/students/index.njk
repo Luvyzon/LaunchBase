@@ -1,0 +1,64 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <title>Students</title>
+{% endblock head %}
+
+{% block content %}
+    <div class="card table-container">
+    <a href="/students/create">Cadastrar Estudante</a>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Nome Completo</th>
+                    <th>Email</th>
+                    <th>Ano Escolar</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                
+                <input type="hidden" name="id" value="{{student.id}}">
+                    <tr>
+                        <td>
+                        <span style="background-image:url({{student.avatar_url}})"></span>
+                        {{student.name}}
+                        </td>
+                        <td>{{student.email}}</td>
+                        <td>{% if(student.degree == "5")%}
+                            5º Ano Ensino Fundamental
+                            {%endif%}
+                            {% if(student.degree == "6")%}
+                            6º Ano Ensino Fundamental
+                            {%endif%}
+                            {% if(student.degree == "7")%}
+                            7º Ano Ensino Fundamental
+                            {%endif%}
+                            {% if(student.degree == "8")%}
+                            8º Ano Ensino Fundamental
+                            {%endif%}
+                            {% if(student.degree == "9")%}
+                            9º Ano Ensino Fundamental
+                            {%endif%}
+                            {% if(student.degree == "1")%}
+                            1º Ano Ensino Medio
+                            {%endif%}
+                            {% if(student.degree == "2")%}
+                            2º Ano Ensino Medio
+                            {%endif%}
+                            {% if(student.degree == "3")%}
+                            3º Ano Ensino Medio
+                            {%endif%}
+                            
+                            </td>
+                        <td>
+                            <a href="/students/{{student.id}}" class="button_index">Ver</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        
+{% endblock content %}

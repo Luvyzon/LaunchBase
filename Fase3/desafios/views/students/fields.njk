@@ -1,0 +1,109 @@
+<div class="item">
+        <div>Avatar URL</div>
+        <input 
+            type="url" 
+            name="avatar_url" 
+            placeholder="http://..."
+            value="{{student.avatar_url}}"
+            >
+        </div>
+        
+        <div class="item">
+        <div>Nome do Professor</div>
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="José da Silva"
+            value="{{student.name}}">
+        </div>
+
+        <div class="item">
+        <div>Data de Nascimento</div>
+        <input 
+        type="date" 
+        name="birth"
+        value="{{ student.birth }}">
+        </div>
+
+        <div class="item">
+        <div>SEXO</div>
+        <span>
+            <input 
+                type="radio" 
+                name="gender" 
+                value="M"
+                {% if(student.gender == "M") %}
+                    checked
+                {% endif%}
+                >MASCULINO
+        </span>
+        <span>
+            <input 
+                type="radio" 
+                name="gender" 
+                value="F"
+                {% if(student.gender == "F") %}
+                    checked
+                {% endif%}
+                >FEMININO
+        </span>
+        </div>
+        <div class="item">
+        <div>Email</div>
+            <input 
+                type="email" 
+                name="email" 
+                value="{{student.email}}">
+        </div>
+        <div class="item">
+        <div>Ano Escolar</div>
+            <select name="degree">
+                <option value="5"
+                    {% if(student.degree == "5")%}
+                        selected
+                    {% endif%}
+                >5º Ano Fundamental</option>
+                <option value="6"
+                    {% if(student.degree == "6")%}
+                        selected
+                    {% endif%}
+                >6º Ano Fundamental</option>
+                <option value="7"
+                    {% if(student.degree == "7")%}
+                        selected
+                    {% endif%}
+                >7º Ano Fundamental</option>
+                <option value="8"
+                    {% if(student.degree == "8")%}
+                        selected
+                    {% endif%}
+                >8º Ano Fundamental</option>
+                <option value="9"
+                    {% if(student.degree == "9")%}
+                        selected
+                    {% endif%}
+                >9º Ano Fundamental</option>
+                <option value="1" 
+                    {% if(student.degree == "1")%}
+                        selected
+                    {% endif%}
+                    >1º Ano Medio</option>
+                <option value="2" 
+                    {% if(student.degree == "2")%}
+                        selected
+                    {% endif%}
+                    >2º Ano Medio</option>
+                    <option value="3" 
+                    {% if(student.degree == "3")%}
+                        selected
+                    {% endif%}
+                    >3º Ano Medio</option>
+            </select>
+        </div>
+        <div class="item">
+        <div>Carga horaria semanal</div>
+            <input 
+                type="number" 
+                name="hours" 
+                value="{{student.hours}}">
+        </div>
