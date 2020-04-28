@@ -205,3 +205,34 @@ footer p{
     line-height: 16px;
     
 }
+
+
+/*    ADMIN       */
+/*           HEADER ADMIN          */
+
+header.headerAdmin {
+    height: 80px;
+    width: 100%;
+    padding-top: 10px;
+    background-color: #111;
+    display: inline-flex;
+    
+}
+header.headerAdmin a{
+    text-decoration: none;
+    color: white;
+    padding: 30px;
+}
+.homebuttomAdmin{
+    font-size: x-large;
+    font-family: "Roboto";
+    font-weight: bold;
+    margin-right: 90px;
+    margin-left: 230px;
+  
+}
+header.headerAdmin p{
+    font-size: medium;
+    color: #444;
+    font-family: "Roboto";
+}

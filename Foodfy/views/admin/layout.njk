@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <title>Foodfy Admin</title>
         <link rel="stylesheet" href="/public/styles.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -11,19 +11,16 @@
       {% endblock %}
     </head>
     <body>
-        <header>
-            <a href="/" class="homebuttom">Foodfy</a>
-            <a href="/sobre" class="menubuttom" id="aboutbuttom">Sobre</a>
-            <a href="/receitas" class="menubuttom" id="recipesbuttom">Receitas</a>
+        <header class="headerAdmin">
+            <a href="/admin" class="homebuttomAdmin">Foodfy</a>
+            <p>ADMIN</p>
         </header>
         
         {% block content%}
 
         {% endblock %}
 
-        <footer>
-            <p class="footer-info">Todos os direitos reservados, receitas Foodfy</p>
-        </footer>
+        
         <script src="/public/scripts.js"></script>
     </body>
 </html>
