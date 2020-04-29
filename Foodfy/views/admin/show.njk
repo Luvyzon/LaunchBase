@@ -1,1 +1,21 @@
 {% extends 'admin/layout.njk' %}
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+<div class="bodyAdmin">
+    <form action="/admin/recipes?_method=PUT" method="POST">
+        <div class="showAdmin">
+            <h1>Receita: {{recipe.title}}</h1>
+            <button type="submit">Editar Receita</button>
+        </div>
+        <div class="showAdminImage">
+            <img src="{{recipe.image}}">
+        </div>
+        <div class="showAdminContentTitle">
+            <div>{{recipe.title}}</div>
+            <div>{{recipe.author}}</div>
+        </div>
+    </form>
+</div>
+{% endblock content %}
