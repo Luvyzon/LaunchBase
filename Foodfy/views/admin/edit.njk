@@ -1,1 +1,64 @@
 {% extends 'admin/layout.njk' %}
+
+{% block head %}
+<title>FoodfyAdmin Edit Recipe</title>
+{% endblock head %}
+
+{% block content%}
+    <div>
+     <form action="/admin/recipes?_method=DELETE" method="POST">
+        <button type="submit" style="background-color: red;color: white;border-radius: 4px;text-decoration: none;text-align: center;">DELETAR RECEITA</button>
+    <input type="hidden" name="id" value="{{recipe.id}}">
+    </form>
+    <form action="/admin/recipes?_method=PUT" method="POST">
+    <input type="hidden" name="id" value="{{recipe.id}}">
+        <div class="showAdmin">
+            <h1>Editar Receita</h1>
+            <button type="submit">Salvar Receita</button>
+           
+            </div>
+        </div>
+        <div class="showAdminContent">
+            <div class="itemForm">
+                <div class="itemFormTitle">Imagem da Receita</div>
+                <input type="text" name="image" id="recipe_image" value="{{recipe.image}}">
+            </div>
+            <div class="itemForm">
+                <div class="itemFormTitle">Nome da Receita</div>
+                <input type="text" name="title" id="recipe_name" value="{{recipe.title}}">
+            </div>
+            <div class="itemForm">
+                <div class="itemFormTitle">Nome do(a) Autor(a)</div>
+                <input type="text" name="author" id="recipe_author" value="{{recipe.author}}">
+            </div>
+            <div class="itemForm">
+                <div class="itemFormTitle">Ingredientes</div>
+                <div id="ingredients">
+                    <div class="ingredient">
+                    {% for ingredient in recipe.ingredients %}
+                        <input type="text[]" name="ingredients" value="{{ingredient}}" placeholder="Ingrediente" />
+                    {%endfor%}
+                    </div>
+                </div>
+                <button type="button" class="add-ingredient">Adicionar Ingrediente</button>
+            </div>
+            <div class="itemForm">
+                <div class="itemFormTitle">Modo de Preparo</div>
+                <div id="steps">
+                    <div class="step">
+                    {% for step in recipe.preparation%}
+                        <input type="text[]" name="preparation" value="{{step}}" placeholder="Passo">
+                    {%endfor%}
+                    </div>
+                </div>
+                <button type="button" class="add-step">Adicionar novo passo </button>
+            </div>
+            <div class="itemForm">
+                <div class="itemFormTitle">Informações Adicionais</div>
+                <textarea cols="36" rows="5" class="recipeInfoField" type="text" name="information" id="recipe_info" value="">{{recipe.information}}</textarea>
+            </div>
+        </div>
+    </form>
+
+<script src="/public/scriptsAdd.js"></script>
+{% endblock content %}

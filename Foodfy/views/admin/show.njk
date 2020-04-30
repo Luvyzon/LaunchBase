@@ -4,10 +4,9 @@
 
 {% block content %}
 
-    <form action="/admin/recipes?_method=PUT" method="POST">
         <div class="showAdmin">
             <h1>Receita: {{recipe.title}}</h1>
-            <button type="submit">Editar Receita</button>
+            <a href="/admin/recipes/{{recipe.id}}/edit">Editar Receita</a>
         </div>
         <div class="showAdminImage">
             <img src="{{recipe.image}}">

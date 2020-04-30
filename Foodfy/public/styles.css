@@ -281,7 +281,7 @@ header.headerAdmin p{
 }
 .showAdmin{
     display: grid;
-    grid-template-columns: 8fr 1fr;
+    grid-template-columns: 8fr 2fr;
     padding: 16px;
 }
 .itemForm{
@@ -302,8 +302,13 @@ header.headerAdmin p{
 .itemForm button{
     color: #6558C3;
 }
-.itemForm input.recipeInfoField{
+.itemForm textarea.recipeInfoField{
     height: 250px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 24px;
 }
 .showAdminImage img{
     width: 100%;
@@ -355,4 +360,16 @@ header.headerAdmin p{
     color: #444;
     line-height: 28px;
     
+}
+.showAdmin button[type=submit] {
+    background-color: #6558C3;
+    color: white;
+    border-radius: 8px;
+}
+.showAdmin a {
+    background-color: #6558C3;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
 }
