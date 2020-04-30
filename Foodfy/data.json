@@ -144,8 +144,12 @@
       "title": "Teste",
       "author": "Matheus",
       "image": "www.google.com.br",
-      "ingredients": "wiggle",
-      "preparation": "pu pu pu pu",
+      "ingredients": [
+        "wiggle"
+      ],
+      "preparation": [
+        "pu pu pu pu"
+      ],
       "information": "vigo vigo vigo"
     },
     {

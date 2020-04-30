@@ -6,10 +6,10 @@
     padding: 0;
     border: 0;
 }
+
 .body{
-    
-    margin-left: 230px;
-    margin-right: 230px;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
 }
 /*=======HEADER========*/
 header{  
@@ -215,9 +215,10 @@ footer p{
 /*    ADMIN       */
 /*           HEADER ADMIN          */
 .bodyAdmin{
+    width: 100%;
     position: absolute;
-    margin-left: 230px;
-    margin-right: 230px;
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
 }
 .bodyAdmin h1{
     color: #111;
@@ -307,6 +308,51 @@ header.headerAdmin p{
 .showAdminImage img{
     width: 100%;
     position: relative;
-    padding: 16px;
-    border-radius: 24px;
+    padding: 16px 0;
+    border-radius: 15px;
+}
+.showAdminContentTitle {
+    text-align: center;
+}
+.showAdminContentTitle div:nth-child(1){
+    font-size: 36px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: #111;
+}
+.showAdminContentTitle div:nth-child(2){
+    font-size: 20px;
+    font-family: "Roboto";
+    color: #777;
+}
+.showAdminSteps div,
+.showAdminIngredients div {
+    font-size: 24px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: #111;
+    padding: 16px 0;
+}
+.showAdminSteps li,
+.showAdminIngredients li{
+    list-style-type: none;
+    font-size: 18px;
+    font-family: "Roboto";
+    color: #444;
+    line-height: 28px;
+   
+}
+.showAdminInfo div:nth-child(1) {
+    font-size: 24px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: #111;
+    padding: 16px 0;
+}
+.showAdminInfo div:nth-child(2) {
+    font-size: 18px;
+    font-family: "Roboto";
+    color: #444;
+    line-height: 28px;
+    
 }

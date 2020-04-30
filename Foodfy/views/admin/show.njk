@@ -3,7 +3,7 @@
 {% endblock head %}
 
 {% block content %}
-<div class="bodyAdmin">
+
     <form action="/admin/recipes?_method=PUT" method="POST">
         <div class="showAdmin">
             <h1>Receita: {{recipe.title}}</h1>
@@ -14,8 +14,30 @@
         </div>
         <div class="showAdminContentTitle">
             <div>{{recipe.title}}</div>
-            <div>{{recipe.author}}</div>
+            <div>por {{recipe.author}}</div>
+        </div>
+        <div class="showAdminContent">
+            <div class="showAdminIngredients">
+                <div>Ingredientes</div>
+                <ul>
+                    {% for ingredient in recipe.ingredients%}
+                        <li>-{{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="showAdminSteps">
+                <div>Modo de Preparo</div>
+                <ul>
+                    {% for step in recipe.preparation %}
+                        <li>-{{step}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="showAdminInfo">
+                <div>Informações adicionais</div>
+                <div>{{recipe.information}}</div>
+            </div>
         </div>
     </form>
-</div>
+
 {% endblock content %}
