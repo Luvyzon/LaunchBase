@@ -1,6 +1,4 @@
-const fs = require("fs")
-const data = require("../data.json")
-const { age, date } = require ('../utils.js')
+const { age, date } = require ('../../lib/utils.js')
 const Intl = require('intl')
 
 
