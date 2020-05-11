@@ -1,5 +1,6 @@
 const { age, date } = require ('../../lib/utils.js')
 const Intl = require('intl')
+const db = require('../../config/db.js')
 
 module.exports = {
     index (req, res){
@@ -10,13 +11,7 @@ module.exports = {
     //show
     show (req, res){
        
-        const instructor = {
-            ...foundInstructor,
-            age: age(foundInstructor.birth),
-            services: foundInstructor.services.split(","),
-            created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at),
-    
-        }
+        
         return res.render('instructors/show', {instructor})
     },
     //create
@@ -29,29 +24,30 @@ module.exports = {
             }
         }
     
-        let { avatar_url, birth, name, services, gender} = req.body
-    
-        birth = Date.parse(birth)
-        const created_at = Date.now()
-        const id = Number(data.instructors.length + 1)
-    
-    
-    
-        data.instructors.push({
-            id,
+        const query = `
+        INSERT INTO instructors (
             name,
             avatar_url,
-            birth,
             gender,
             services,
+            birth,
             created_at
+        ) VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING id
+        `
+        const values = [
+            req.body.name,
+            req.body.avatar_url,
+            req.body.gender,
+            req.body.services,
+            date(req.body.birth).iso,
+            date(Date.now()).iso,
+        ]
+        db.query(query, values, function(err, results){
+            if (err) return res.send('Database write error')
+          
+            return res.redirect(`/instructors/${results.rows[0].id}`)
         })
-    
-        fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
-            if(err) return res.send("Write file error")
-            return res.redirect("/instructors")
-        })
-        
     },
     //edit
     edit (req, res){
