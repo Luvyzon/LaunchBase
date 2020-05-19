@@ -51,17 +51,17 @@
 
         <div class="item">
         <div>Grau de Escolaridade</div>
-        <select name="ed_level">
+        <select name="education_level">
         <option 
             value="emc" 
-            {% if(teatcher.ed_level == "emc") %}
+            {% if(teatcher.education_level == "emc") %}
                 selected
             {% endif %}
             >Ensino Medio Completo
         </option>
         <option 
             value="esc"
-            {% if(teatcher.ed_level == "esc") %}
+            {% if(teatcher.education_level == "esc") %}
                 selected
             {% endif %}
             
@@ -69,14 +69,14 @@
         </option>
         <option 
             value="master"
-            {% if(teatcher.ed_level == "master") %}
+            {% if(teatcher.education_level == "master") %}
                 selected
             {% endif %}
             >Mestrado
         </option>
         <option 
             value="doctor"
-            {% if(teatcher.ed_level == "doctor") %}
+            {% if(teatcher.education_level == "doctor") %}
                 selected
             {% endif %}
             >Doutorado
@@ -89,7 +89,7 @@
         <span>
             <input 
                 type="radio" 
-                name="type_lesson" 
+                name="class_type" 
                 value="P"
                 {% if(teatcher.type_lesson == "P")%}
                 checked
@@ -99,7 +99,7 @@
         <span>
             <input 
                 type="radio" 
-                name="type_lesson" 
+                name="class_type" 
                 value="EAD"
                 {% if(teatcher.type_lesson == "EAD")%}
                 checked
@@ -112,8 +112,8 @@
         <div>Area de Atuação</div>
         <input 
             type="text" 
-            name="area" 
+            name="subjects_taught" 
             placeholder="Separe os itens com virgula" 
-            value="{{teatcher.area}}">
+            value="{{teatcher.subjects_taught}}">
         </div>
         
