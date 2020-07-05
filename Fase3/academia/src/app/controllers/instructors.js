@@ -9,6 +9,10 @@ module.exports = {
         return res.render('instructors/index', {instructors})
     })
     },
+    create (req, res){
+        
+        return res.render('instructors/create')
+    },
     //show
     show (req, res){
         Instructor.find(req.params.id, function(instructor){

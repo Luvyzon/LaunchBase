@@ -25,8 +25,9 @@ module.exports = {
             gender,
             birth,
             weight,
-            height
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+            height,
+            instructor_id
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
         RETURNING id
         `
         const values = [
@@ -36,7 +37,8 @@ module.exports = {
             data.gender,
             date(data.birth).iso,
             data.weight,
-            data.height
+            data.height,
+            data.instructor
         ]
         db.query(query, values, function(err, results){
             if(err) throw `Database Error! ${err}`
@@ -59,12 +61,13 @@ module.exports = {
         UPDATE members SET
             avatar_url=($1),
             name=($2),
-            birth=($3)
+            birth=($3),
             email=($4),
             gender=($5),
             weight=($6),
-            height=($7)
-        WHERE id = $8
+            height=($7),
+            instructor_id=($8)
+        WHERE id = $9
         `
         const values = [
             data.avatar_url,
@@ -74,10 +77,11 @@ module.exports = {
             data.gender,
             data.weight,
             data.height,
+            data.instructor,
             data.id
         ]
-        db.query(query, values, function(err, results){
-            if(err) throw "Database Error!"
+        db.query(query, values, function(err, results) {
+            if(err) throw `Database Error! ${err}`
           
             callback()
         })
@@ -86,6 +90,12 @@ module.exports = {
         db.query(`DELETE FROM members WHERE id = $1`, [id], function(err){
             if(err) throw `Database error ${err}`
             return callback()
+        })
+    },
+    instructorsSelectOptions(callback){
+        db.query(`SELECT name, id FROM instructors`, function(err, results){
+            if(err) throw  `Database Error! ${err}`
+            callback(results.rows)
         })
     }
 }

@@ -13,6 +13,7 @@
                 
                 <th>Instrutores</th>
                 <th>Acompanhamento</th>
+                <th>Alunos</th>
                 <th>Ação</th>
             </tr>
         </thead>
@@ -25,9 +26,13 @@
                         {{instructor.name}}</td>
                     <td>{{instructor.services}}</td>
                     <td>
+                        {{instructor.total_students}}
+                    </td>
+                    <td>
                         <a class="button_index" href="/instructors/{{instructor.id}}">Ver</a> / 
                         <a class="button_index" href="/instructors/{{instructor.id}}/edit">Editar</a>
                     </td>
+                    
                 </tr>
             {%endfor%}
         </tbody>
