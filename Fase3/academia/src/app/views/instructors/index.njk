@@ -6,7 +6,17 @@
 
 {% block content %}
 <div class="cards table-container">  
-<a href="/instructors/create">Cadastrar Instrutor</a> 
+    <div class="headerCard">
+        <a href="/instructors/create">Novo</a> 
+        <form action="/instructors?filter=" method="get">
+            <input 
+            type="text"
+            name="filter"
+            placeholder="Nome ou Acompanhamento"
+            >
+            <button type="submit">Filtrar</button>
+        </form>
+    </div>
     <table width="100%">
         <thead>
             <tr>

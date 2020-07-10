@@ -159,8 +159,9 @@ button[type="submit"]{
 /* INDEX INSTRUCTORS */
 .table-container{
     display: block;
-    padding: 40px;
-    box-sizing: border-box;
+    padding: 32px;
+    
+    
 }
 .table-container table{
     border-spacing: 0;
@@ -205,3 +206,53 @@ tbody tr td:first-child span{
     background-color: var(--primary-color);
     border-radius: 8px;
 }
+
+.headerCard{
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 32px;
+}
+.headerCard form{
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    align-items: center;
+   
+    grid-gap: 8px;
+}
+.headerCard form button[type="submit"]{
+    text-decoration: none;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 8px 32px;
+    width: 120px;
+   text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+    margin: 0;
+    letter-spacing: 0;
+}
+.headerCard a {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 8px 32px;
+    width: 120px;
+   text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+    margin: 0;
+}
+.headerCard form input{
+    
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    
+    box-sizing: border-box;
+}
+
+
