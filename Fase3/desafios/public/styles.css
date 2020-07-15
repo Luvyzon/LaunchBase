@@ -62,7 +62,6 @@ body{
     grid-template-columns: 4fr 6fr;
     margin: 15px auto;
     width: 90%;
-    max-width: 800px;
     height: 400px;
     animation: up 800ms ease-out;
     box-shadow: 2px 8px 14px -5px #555;

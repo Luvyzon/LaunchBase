@@ -28,15 +28,15 @@
         </div>
         <div class="item">
         <div>formação</div>
-        <div>{{teatcher.ed_level}}</div>
+        <div>{{teatcher.education_level}}</div>
         </div>
         <div class="item">
         <div>Tipo de aula</div>
-        <div>{{ teatcher.type_lesson }}</div>
+        <div>{{ teatcher.class_type }}</div>
         </div>
         <div class="item">
         <div>acompanhamento</div>
-        {% for item in teatcher.area %}
+        {% for item in teatcher.subjects_taught %}
             <span>{{item}}</span>
         {% endfor %}
         </div>

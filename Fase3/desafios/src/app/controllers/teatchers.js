@@ -4,10 +4,21 @@ const Teatcher = require('../models/teatcher')
 
 module.exports = {
     index (req, res){
-        Teatcher.all(function(teatchers){
-            return res.render('teatchers/index', {teatchers})
-        })
-        
+        const { filter } = req.query
+        if(filter) {
+            Teatcher.findBy(filter, function(teatchers){
+                 return res.render('teatchers/index', {teatchers})
+            })
+        } else {
+            Teatcher.all(function(teatchers){
+                return res.render('teatchers/index', {teatchers})
+           })
+        }
+    },
+    create (req, res){
+       
+            return res.render("teatchers/create")
+    
     },
     post (req,res){
         
@@ -21,7 +32,9 @@ module.exports = {
             if(!teatcher) return res.send('Teatcher Not Found!')
             teatcher.age = age(teatcher.birth)
             teatcher.subjects_taught = teatcher.subjects_taught.split(',')
-            teatcher.created_at = date(teatcher.created_at).format
+            teatcher.created_at = date(teatcher.created_at).since
+            teatcher.education_level = graduation(teatcher.education_level)
+            teatcher.class_type = type_lesson(teatcher.class_type)
             return res.render('teatchers/show', {teatcher})
         })
         

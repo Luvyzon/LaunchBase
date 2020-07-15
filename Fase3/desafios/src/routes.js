@@ -8,9 +8,7 @@ routes.get('/', function(req, res){
 })
 
 routes.get('/teatchers', teatchers.index)
-routes.get('/teatchers/create', function(req, res){
-    return res.render("teatchers/create")
-})
+routes.get('/teatchers/create', teatchers.create)
 routes.get('/teatchers/:id', teatchers.show)
 routes.get('/teatchers/:id/edit', teatchers.edit)
 routes.post('/teatchers', teatchers.post)
@@ -19,9 +17,7 @@ routes.delete('/teatchers', teatchers.delete)
 
 
 routes.get('/students', students.index)
-routes.get('/students/create', function(req, res){
-    return res.render("students/create")
-})
+routes.get('/students/create', students.create)
 routes.get('/students/:id', students.show)
 routes.get('/students/:id/edit', students.edit)
 routes.post('/students', students.post)

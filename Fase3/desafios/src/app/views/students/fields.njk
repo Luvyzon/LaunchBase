@@ -107,3 +107,13 @@
                 name="hours" 
                 value="{{student.hours}}">
         </div>
+        <div class="item">
+            <select name="teatcher">
+                {% for teatcher in teatcherOptions %}
+                <option value="{{teatcher.id}}" {% if students.teatcher_id == teatcher.id %} selected {% endif %}>
+                    {{teatcher.name}}
+                </option>
+                {% endfor %}
+
+            </select>
+        </div>

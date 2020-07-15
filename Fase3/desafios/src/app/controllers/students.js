@@ -1,15 +1,23 @@
 const { age, graduation, type_lesson, date } = require("../../lib/utils.js")
 const Intl = require("intl")
 const Student = require('../models/student')
+const teatcher = require("../models/teatcher.js")
 
 module.exports = {
     index (req, res){
+        
         Student.all(function(students){
             return res.render('students/index', {students})
         })
         
     },
-    post (req,res){
+    create (req, res){
+        Student.teatchersSelectOptions(function(options){
+            return res.render("students/create", {teatcherOptions: options})
+        })
+
+    },
+    post (req, res){
         
         Student.create(req.body, function(student){
             return res.redirect(`/students/${student.id}`)
@@ -20,6 +28,7 @@ module.exports = {
         Student.find(req.params.id, function(student){
             if(!student) return res.send('Student Not Found!')
             student.birth = date(student.birth).birthDay
+            
            
             return res.render('students/show', {student})
         })
@@ -30,16 +39,13 @@ module.exports = {
             if(!student) return res.send('Student Not Found!')
             student.birth = date(student.birth).iso
            
-            return res.render('students/edit', {student})
+            Student.teatchersSelectOptions(function(options){
+                return res.render("students/edit", {student, teatcherOptions: options})
+            })
         })
     },
     put (req, res){
-        const keys = Object.keys(req.body)
-        for(key of keys) {
-            if( req.body[key] == ""){
-                return res.send("Please, fill all fields")
-            }
-        }
+        
         Student.update(req.body, function(err){
             if(err) throw `Write file Error! ${err}`
 

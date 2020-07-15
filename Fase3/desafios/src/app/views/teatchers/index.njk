@@ -6,12 +6,13 @@
 
 {% block content %}
     <div class="card table-container">
-    <a href="/teatchers/create">Cadastrar Instrutor</a>
+    <a class="button_index" href="/teatchers/create">Cadastrar Instrutor</a>
         <table width="100%">
             <thead>
                 <tr>
                     <th>Nome Completo</th>
                     <th>Acompanhamento</th>
+                    <th>Alunos</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                         {% endfor %}
                         
                         </td>
+                        <td>{{ teatcher.total_students }}</td>
                         <td>
                             <a href="/teatchers/{{teatcher.id}}" class="button_index">Ver</a>
                             <a href="/teatchers/{{teatcher.id}}/edit" class="button_index">Editar</a>
