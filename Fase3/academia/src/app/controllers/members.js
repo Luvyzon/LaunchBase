@@ -15,7 +15,14 @@ module.exports = {
         })
         
     },
-    //show
+    post (req, res){
+        
+        Member.create(req.body, function(member){
+ 
+         return res.redirect(`/members/${member.id}`)
+        })
+        
+     },
     show (req, res){
         Member.find(req.params.id, function(member){
             if(!member) return res.send('Member Not Found!')
@@ -24,16 +31,6 @@ module.exports = {
             return res.render('members/show', {member})
         })
     },
-    //create
-    post (req, res){
-        
-       Member.create(req.body, function(member){
-
-        return res.redirect(`/members/${member.id}`)
-       })
-       
-    },
-    //edit
     edit (req, res){
         
         Member.find(req.params.id, function(member){
@@ -46,7 +43,6 @@ module.exports = {
             
         })
     },
-    // put
     put (req, res){
         const keys = Object.keys(req.body)
         for(key of keys) {
@@ -60,7 +56,6 @@ module.exports = {
             return res.redirect(`/members/${req.body.id}`)
         })
     },
-    // delete
     delete (req,res){
         Member.delete(req.body.id, function(){
             return res.redirect(`/members`)

@@ -66,7 +66,7 @@ module.exports = {
         OR instructors.services ILIKE '%${filter}%'
         GROUP BY instructors.id
         ORDER BY total_students DESC`, function(err, results){
-            if(err) throw "Database Error!"
+            if(err) throw `Database Error! ${err}`
 
             callback(results.rows)
         })
