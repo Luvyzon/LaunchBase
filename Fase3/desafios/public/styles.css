@@ -205,3 +205,57 @@ td:nth-child(2) span{
     display: inline-block;
     text-transform: uppercase;
 }
+.headercard{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    box-sizing: border-box;
+}
+.headercard a {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 8px 32px;
+    width: 120px;
+   text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+    margin: 0;
+}
+.headercard form{
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    grid-gap: 8px;
+    align-items: center;
+}
+.headercard form input {
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    
+    box-sizing: border-box;
+}
+.headercard form button[type= "submit"]{
+    margin: 0px;
+    padding: 2px 32px;
+    letter-spacing: 0;
+}
+.pagination{
+    text-align: center;
+    margin-top: 10px;
+ }
+ .pagination span,
+ .pagination a{
+     text-decoration: none;
+     color: var(--primary-color);
+     font-family: "Roboto";
+     font-weight: bold;
+     margin-left: 10px;
+     margin-right: 10px;
+     font-size: 20px;
+ }
+ .pagination a:hover {
+     filter: brightness(0.3);
+     border-bottom: 1px solid var(--primary-color);
+ }

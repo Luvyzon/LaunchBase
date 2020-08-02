@@ -6,7 +6,17 @@
 
 {% block content %}
     <div class="card table-container">
-    <a class="button_index" href="/teatchers/create">Cadastrar Instrutor</a>
+        <div class="headercard">
+            <a class="button_index" href="/teatchers/create">Cadastrar Instrutor</a>
+            <form action="/teatchers?filter=" method="get">
+                <input 
+                type="text"
+                name="filter"
+                placeholder="Nome ou acompanhamento"
+                >
+                <button type="submit">Filtrar</button>
+            </form>
+        </div>
         <table width="100%">
             <thead>
                 <tr>
@@ -40,6 +50,11 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="pagination"
+        data-page={{pagination.page}}
+        data-total={{pagination.total}}
+        data-filter={{filter}}
+    >
     </div>
         
 {% endblock content %}

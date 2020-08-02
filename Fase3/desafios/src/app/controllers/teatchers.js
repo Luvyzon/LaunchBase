@@ -4,16 +4,27 @@ const Teatcher = require('../models/teatcher')
 
 module.exports = {
     index (req, res){
-        const { filter } = req.query
-        if(filter) {
-            Teatcher.findBy(filter, function(teatchers){
-                 return res.render('teatchers/index', {teatchers})
-            })
-        } else {
-            Teatcher.all(function(teatchers){
-                return res.render('teatchers/index', {teatchers})
-           })
+        let { filter, page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 2
+        let offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(teatchers){
+                const pagination = {
+                    total: Math.ceil(teatchers[0].total / limit),
+                    page
+                }
+                return res.render('teatchers/index', {teatchers, pagination, filter})
+            }
         }
+        Teatcher.paginate(params)
+        
     },
     create (req, res){
        
