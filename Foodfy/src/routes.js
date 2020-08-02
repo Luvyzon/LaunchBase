@@ -1,6 +1,6 @@
 const express = require('express')
 const routes = express.Router()
-const recipes = require('./controllers/admin.js')
+const recipes = require('./app/controllers/admin.js')
 
 // PAGE INTIAL
 routes.get('/', function (_req, res) {
