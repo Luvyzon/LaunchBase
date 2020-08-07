@@ -1,14 +1,13 @@
 const fs = require('fs')
 const data = require('../../data.json')
-
-exports.index = function (req, res) {
-  return res.render('admin/index', { recipes: data.recipes })
-}
-
-exports.create = function (req, res) {
-  return res.render('admin/create')
-}
-exports.show = function (req, res) {
+module.exports = {
+index (req, res) {
+  return res.render('admin/recipes/index', { recipes: data.recipes })
+},
+create (req, res) {
+  return res.render('admin/recipes/create')
+},
+show (req, res) {
   const { id } = req.params
   const foundRecipe = data.recipes.find(function (recipe) {
     return recipe.id == id
@@ -18,9 +17,9 @@ exports.show = function (req, res) {
   const recipe = {
     ...foundRecipe
   }
-  return res.render('admin/show', { recipe })
-}
-exports.edit = function (req, res) {
+  return res.render('admin/recipes/show', { recipe })
+},
+edit (req, res) {
   const { id } = req.params
   const foundRecipe = data.recipes.find(function (recipe) {
     return recipe.id == id
@@ -30,10 +29,10 @@ exports.edit = function (req, res) {
   const recipe = {
     ...foundRecipe
   }
-  return res.render('admin/edit', { recipe })
-}
+  return res.render('admin/recipes/edit', { recipe })
+},
 
-exports.post = function (req, res) {
+post (req, res) {
   const { image, ingredients, preparation, information, title, author } = req.body
 
   const id = Number(data.recipes.length + 1)
@@ -52,8 +51,8 @@ exports.post = function (req, res) {
     if (err) return res.send('Write file error')
     return res.redirect('/admin')
   })
-}
-exports.put = function (req, res) {
+},
+put (req, res) {
   const { id } = req.body
   let index = 0
 
@@ -74,10 +73,10 @@ exports.put = function (req, res) {
 
   fs.writeFile('data.json', JSON.stringify(data, null, 2), function (err) {
     if (err) return res.send('Write file error')
-    return res.redirect(`/admin/recipes/${id}`)
+    return res.redirect(`/admin/recipes/recipes/${id}`)
   })
-}
-exports.delete = function (req, res) {
+},
+delete (req, res) {
   const { id } = req.body
   const filteredRecipes = data.recipes.filter(function (recipe) {
     return recipe.id != id
@@ -87,5 +86,6 @@ exports.delete = function (req, res) {
   fs.writeFile('data.json', JSON.stringify(data, null, 2), function (err) {
     if (err) return res.send('Write file Error!')
   })
-  return res.redirect('/admin/recipes')
+  return res.redirect('/admin/recipes/recipes')
+}
 }
