@@ -406,12 +406,22 @@ header.headerAdmin a{
     font-weight: bold;
     font-size: 24px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     align-items: center;
     width: 100%;
 }
 .titleChef button[type="submit"]{
     background: #6558C3;
+    border-radius: 4px;
+    border-radius: 4px; 
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 8px;
+} 
+button[type="submit"].deleteChef {
+    background: red;
     border-radius: 4px;
     border-radius: 4px; 
     font-family: "Roboto";
