@@ -244,6 +244,9 @@ header.headerAdmin a{
     padding: 30px;
 
 }
+header.headerAdmin a.active {
+    color: white;
+}
 .homebuttomAdmin{
     font-size: 15px;
     font-family: "Roboto";
