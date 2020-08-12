@@ -5,7 +5,7 @@ module.exports = {
     db.query(`
       SELECT chefs.*
       FROM chefs
-      GROUP BY instructors.id
+      GROUP BY chefs.id
       `, function (err, results) {
       if (err) throw `Database error: ${err}`
 

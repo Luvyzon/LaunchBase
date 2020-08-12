@@ -6,13 +6,13 @@ const { Router } = require('express')
 
 // PAGE INTIAL
 routes.get('/', function (_req, res) {
-  return res.render('inicio', { items: recipes })
+  return res.render('site/inicio', { items: recipes })
 })
 routes.get('/sobre', function (_req, res) {
-  return res.render('sobre')
+  return res.render('site/sobre')
 })
 routes.get('/receitas', function (_req, res) {
-  return res.render('receitas', { items: recipes })
+  return res.render('site/receitas', { items: recipes })
 })
 routes.get('/recepts', function (req, res) {
   const id = req.query.id
@@ -24,7 +24,7 @@ routes.get('/recepts', function (req, res) {
   if (!recipe) {
     return res.send('Receita não encontrada')
   }
-  return res.render('recepts', { recipe })
+  return res.render('site/recepts', { recipe })
 })
 
 // ADMIN RECIPES

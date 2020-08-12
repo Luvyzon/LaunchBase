@@ -1,0 +1,14 @@
+{% extends 'admin/layout.njk' %}
+
+{% block head %}
+<title>Chefs Foodfy</title>
+{% endblock head %}
+
+{% block content %}
+<h1>content</h1>
+{% for chef in chefs %}
+
+<div>{{chef.name}}</div>
+
+{% endfor %}
+{% endblock content %}
