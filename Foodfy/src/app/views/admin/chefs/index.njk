@@ -5,10 +5,20 @@
 {% endblock head %}
 
 {% block content %}
-<h1>content</h1>
+<div class="bodyChefs">
+<h1>Gerenciar chefs</h1>
+<div class="listChefs">
 {% for chef in chefs %}
-
-<div>{{chef.name}}</div>
-
+<div class="infoChef">
+    <div class="avatarChef">
+        <img src="{{chef.avatar_url}}">
+    </div>
+    <div>
+        <div class="nameChef">{{chef.name}}</div>
+        <a href="/admin/chef/{{chef.id}}">Visualizar</a>
+    </div>
+</div>
 {% endfor %}
+</div>
+</div>
 {% endblock content %}

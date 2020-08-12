@@ -231,12 +231,12 @@ header.headerAdmin {
 
     height: 80px;
     width: 100%;
-    padding-top: 10px;
+    padding-top: 0;
     background-color: #111;
     display: grid;
     grid-template-columns: 2fr 6fr 2fr;
     align-items: center;
-    
+    box-sizing: border-box;
 }
 header.headerAdmin a{
     text-decoration: none;
@@ -244,7 +244,7 @@ header.headerAdmin a{
     padding: 30px;
 
 }
-header.headerAdmin a.active {
+.headerAdmin a.active {
     color: white;
 }
 .homebuttomAdmin{
@@ -373,4 +373,29 @@ header.headerAdmin a.active {
     border-radius: 8px;
     text-decoration: none;
     text-align: center;
+}
+
+/* CHEFS */
+.bodyChefs h1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.listChefs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.infoChef {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.avatarChef img{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    padding-right: 10px
+}
+.nameChef {
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-family: 'Roboto';
 }
