@@ -400,7 +400,7 @@ header.headerAdmin a{
     font-family: 'Roboto';
 }
 .titleChef {
-    padding-top: 20px;
+    padding-top: 50px;
     padding-bottom: 20px;
     font-family: "Roboto";
     font-weight: bold;
@@ -410,6 +410,11 @@ header.headerAdmin a{
     align-items: center;
     width: 100%;
 }
+.titleChef a {
+    text-decoration: none;
+    text-align: center;
+}
+.titleChef a,
 .titleChef button[type="submit"]{
     background: #6558C3;
     border-radius: 4px;
@@ -446,4 +451,19 @@ button[type="submit"].deleteChef {
     height: 50px;
     font-size: 20px;
     
+}
+.presentationChef {
+    text-align: center;
+}
+.presentationChef img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 30px
+}
+.presentationChef div {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 24px;
+    color: #111
 }
