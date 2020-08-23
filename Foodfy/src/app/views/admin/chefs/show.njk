@@ -13,7 +13,20 @@
 <div class="presentationChef">
     <img src="{{ chef.avatar_url }}">
     <div>{{ chef.name }}</div>
-    
+    <div class="countRecipesNumber">{{ chef.countRecipes }} receitas</div>
+</div>
+<div class="titleChef">Receitas</div>
+<div class="listChefRecipes">
+    {% for recipe in recipes %}
+        <div class="cardChef">
+                <img class="cardChefImage" src="{{recipe.image}}">
+                <div class="cardChefDescription">
+                <h2>{{recipe.title}}</h3>
+                <h3>por {{recipe.author}}</h3>
+                <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
+                </div>
+            </div>
+    {% endfor %}
 </div>
 
 {% endblock content %}
