@@ -12,7 +12,12 @@ module.exports = {
   show (req, res) {
     Chef.find(req.params.id, function (chef) {
       if (!chef) return res.send('Chef not found!')
-      return res.render('admin/chefs/show', { chef })
+
+      Chef.findRecipesByChef(req.params.id, function (recipes) {
+        Chef.countTotalRecipes(req.params.id, function (total) {
+          return res.render('admin/chefs/show', { chef, recipes, total })
+        })
+      })
     })
   },
   edit (req, res) {

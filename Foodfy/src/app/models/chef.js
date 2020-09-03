@@ -77,5 +77,28 @@ module.exports = {
       if (err) throw `Database error ${err}`
       return callback()
     })
+  },
+  findRecipesByChef (id, callback) {
+    db.query(`
+    SELECT *
+    FROM recipes
+    WHERE chef_id = $1
+    `, [id], function (err, results) {
+      if (err) throw `Database error: ${err}`
+
+      callback(results.rows)
+    })
+  },
+  countTotalRecipes (id, callback) {
+    db.query(`
+      SELECT count (*) AS total_recipes
+      FROM recipes
+      WHERE chef_id = $1
+      GROUP BY chef_id
+      `, [id], function (err, results) {
+      if (err) throw `Database error: ${err}`
+
+      callback(results.rows)
+    })
   }
 }
