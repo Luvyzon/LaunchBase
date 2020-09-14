@@ -15,7 +15,6 @@ module.exports = {
 
       Chef.findRecipesByChef(req.params.id, function (recipes) {
         Chef.countTotalRecipes(req.params.id, function (total) {
-          //total = Number(total)
           total = total[0].total_recipes
           return res.render('admin/chefs/show', { chef, recipes, total })
         })
