@@ -244,10 +244,10 @@ header.headerAdmin a{
     padding: 30px;
 
 }
-.headerAdmin a.active {
+header.headerAdmin a.active{
     color: white;
 }
-.homebuttomAdmin{
+.homebuttomAdmin {
     font-size: 15px;
     font-family: "Roboto";
     font-weight: bold;

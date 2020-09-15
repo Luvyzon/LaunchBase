@@ -1,8 +1,9 @@
-const fs = require('fs')
-const data = require('../../data.json')
+const Recipe = require('../models/recipe')
 module.exports = {
   index (req, res) {
-    return res.render('admin/recipes/index', { recipes: data.recipes })
+    Recipe.all(function (recipes) {
+      return res.render('admin/recipes/index', { recipes })
+    })
   },
   create (req, res) {
     return res.render('admin/recipes/create')
