@@ -467,3 +467,37 @@ button[type="submit"].deleteChef {
     font-size: 24px;
     color: #111
 }
+/* CARD CHEF */
+.listChefRecipes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.cardChef{
+    display: flex;
+    padding: 16px;
+}
+.cardChefImage{
+    width: 200px;
+    height: 80px;
+    border-radius: 16px;
+}
+.cardChefDescription {
+    padding-left: 20px;
+}
+.cardChefDescription p:nth-child(1) {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    color: #111111;
+}
+.cardChefDescription p:nth-child(2) {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    color: #777;
+}
+.cardChefDescription a {
+    text-decoration: none;
+    color:  #6558C3;
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 14px;
+}
