@@ -1,4 +1,5 @@
-const Recipe = require('../models/recipe')
+const Recipe = require('../models/recipe.js')
+
 module.exports = {
   index (req, res) {
     Recipe.all(function (recipes) {
@@ -6,7 +7,9 @@ module.exports = {
     })
   },
   create (req, res) {
-    return res.render('admin/recipes/create')
+    Recipe.find(function (chefs) {
+      return res.render('admin/recipes/create', {chefs})
+    })
   },
   show (req, res) {
     const { id } = req.params
@@ -34,22 +37,7 @@ module.exports = {
   },
 
   post (req, res) {
-    const { image, ingredients, preparation, information, title, author } = req.body
-
-    const id = Number(data.recipes.length + 1)
-
-    data.recipes.push({
-      id,
-      title,
-      author,
-      image,
-      ingredients,
-      preparation,
-      information
-    })
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), function (err) {
-      if (err) return res.send('Write file error')
+    Recipe.create(req.body, function (recipe) {
       return res.redirect('/admin')
     })
   },
