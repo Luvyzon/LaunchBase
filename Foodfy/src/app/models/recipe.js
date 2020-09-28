@@ -58,5 +58,28 @@ module.exports = {
 
       callback(results.rows)
     })
+  },
+  findByID (id, callback) {
+    db.query(`
+    SELECT *
+    FROM recipes
+    WHERE recipes.id = $1
+    `, [id], function (err, results) {
+      if (err) throw `Database error: ${err}`
+
+      callback(results.rows[0])
+    })
+  },
+  findChefRecipe (id, callback) {
+    db.query(`
+    SELECT chefs.*, ON chefs.id = recipes.chef_id
+    FROM chefs
+    ORDER BY chefs.id
+    `, [id], function (err, results) {
+      if (err) throw `Database error: ${err}`
+
+      callback(results.rows[0])
+    })
   }
+
 }

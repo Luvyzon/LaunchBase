@@ -8,34 +8,16 @@ module.exports = {
   },
   create (req, res) {
     Recipe.find(function (chefs) {
-      return res.render('admin/recipes/create', {chefs})
+      return res.render('admin/recipes/create', { chefs })
     })
   },
   show (req, res) {
-    const { id } = req.params
-    const foundRecipe = data.recipes.find(function (recipe) {
-      return recipe.id == id
+    Recipe.findByID(req.params.id, function (recipe) {
+      Recipe.findChefRecipe(req.params.id, function (chef) {
+        return res.render('admin/recipes/show', { recipe, chef })
+      })
     })
-    if (!foundRecipe) return res.send('Recipe not found!')
-
-    const recipe = {
-      ...foundRecipe
-    }
-    return res.render('admin/recipes/show', { recipe })
   },
-  edit (req, res) {
-    const { id } = req.params
-    const foundRecipe = data.recipes.find(function (recipe) {
-      return recipe.id == id
-    })
-    if (!foundRecipe) return res.send('Recipe not found!')
-
-    const recipe = {
-      ...foundRecipe
-    }
-    return res.render('admin/recipes/edit', { recipe })
-  },
-
   post (req, res) {
     Recipe.create(req.body, function (recipe) {
       return res.redirect('/admin')
