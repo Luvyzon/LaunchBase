@@ -16,9 +16,17 @@
         {% include 'admin/chefs/fields.njk' %}
          <input type="hidden" name="id" value="{{chef.id}}">
     </form>
-    <form action="/admin/chefs?_method=DELETE" method="POST">
+    <form class="formDeleteChef" action="/admin/chefs?_method=DELETE" method="POST">
         <input type="hidden" name="id" value="{{chef.id}}">
-        <button class="deleteChef" type="submit">Deletar Chef</button>
+        <script>
+        const deleteButtom = document.querySelector('.formDeleteChef')
+        if ({{total}} >= 1) {
+        <p>Não é Possivel deletar este Chef, possui receitas cadastradas</p>
+        } else {
+          <button class="deleteChef" type="submit" id="deleteChef">Deletar Chef</button>
+        }
+        </script>
+       
     </form>
 </div>
 {% endblock content %}
