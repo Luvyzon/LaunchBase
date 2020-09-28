@@ -72,12 +72,15 @@ module.exports = {
   },
   findChefRecipe (id, callback) {
     db.query(`
-    SELECT chefs.*, ON chefs.id = recipes.chef_id
+    SELECT *
     FROM chefs
+    INNER JOIN recipes
+    ON chefs.id = recipes.chef_id
+    WHERE recipes.id = $1
     ORDER BY chefs.id
     `, [id], function (err, results) {
       if (err) throw `Database error: ${err}`
-
+      console.log(results.rows)
       callback(results.rows[0])
     })
   }

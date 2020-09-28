@@ -12,10 +12,8 @@ module.exports = {
     })
   },
   show (req, res) {
-    Recipe.findByID(req.params.id, function (recipe) {
-      Recipe.findChefRecipe(req.params.id, function (chef) {
-        return res.render('admin/recipes/show', { recipe, chef })
-      })
+    Recipe.findChefRecipe(req.params.id, function (recipe) {
+      return res.render('admin/recipes/show', { recipe })
     })
   },
   post (req, res) {
