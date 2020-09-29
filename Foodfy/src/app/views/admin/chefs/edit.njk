@@ -1,6 +1,7 @@
 {% extends 'admin/layout.njk' %}
 {% block head %}
 <title>Editar chef</title>
+
 {% endblock head %}
 
 {% block content %}
@@ -16,7 +17,7 @@
         {% include 'admin/chefs/fields.njk' %}
          <input type="hidden" name="id" value="{{chef.id}}">
     </form>
-    <form class="formDeleteChef" action="/admin/chefs?_method=DELETE" method="POST">
+    <form class="formDeleteChef" id="form-delete" action="/admin/chefs?_method=DELETE" method="POST">
         <input type="hidden" name="id" value="{{chef.id}}">
     
         {% if total >= 1 %}
@@ -24,8 +25,18 @@
         {% else %}
             <button class="deleteChef" type="submit" id="deleteChef">Deletar Chef</button>
         {% endif %}      
-                
+        
            
     </form>
 </div>
+<script>
+    const formDelete = document.querySelector("#form-delete")
+    formDelete.addEventListener("submit", function(event) {
+        const confirmation = confirm("Deseja deletar?")
+        
+        if(!confirmation) {
+            event.preventDefault()
+        }
+    })
+</script>
 {% endblock content %}
