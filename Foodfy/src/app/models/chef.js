@@ -8,19 +8,12 @@ module.exports = {
       FROM chefs
       ORDER BY chefs.id
       `, function (err, results) {
-      if (err) throw `Database error: ${err}`
-
+     const error = `Database error: ${err}`
+      if (err) throw error
       callback(results.rows)
     })
   },
   create (data, callback) {
-    const keys = Object.keys(data)
-    for (key of keys) {
-      if (data[key] == '') {
-        return res.send('Please, fill all fields')
-      }
-    }
-
     const query = `
     INSERT INTO chefs (
       name,
@@ -37,8 +30,8 @@ module.exports = {
     ]
 
     db.query(query, values, function (err, results) {
-      if (err) throw `Database error: ${err}`
-
+      const error = `Database error: ${err}`
+      if (err) throw error
       callback(results.rows)
     })
   },
@@ -47,8 +40,8 @@ module.exports = {
     SELECT *
     FROM chefs
     WHERE id = $1`, [id], function (err, results) {
-      if (err) throw `Database error: ${err}`
-
+      const error = `Database error: ${err}`
+      if (err) throw error
       callback(results.rows[0])
     })
   },
@@ -65,8 +58,8 @@ module.exports = {
       data.id
     ]
     db.query(query, values, function (err, results) {
-      if (err) throw `Database error: ${err}`
-
+      const error = `Database error: ${err}`
+      if (err) throw error
       callback()
     })
   },
@@ -74,7 +67,8 @@ module.exports = {
     db.query(`
     DELETE FROM chefs
     WHERE id = $1`, [id], function (err) {
-      if (err) throw `Database error ${err}`
+      const error = `Database error: ${err}`
+      if (err) throw error
       return callback()
     })
   },
@@ -84,8 +78,8 @@ module.exports = {
     FROM recipes
     WHERE chef_id = $1
     `, [id], function (err, results) {
-      if (err) throw `Database error: ${err}`
-
+     const error = `Database error: ${err}`
+      if (err) throw error
       callback(results.rows)
     })
   },
@@ -97,7 +91,8 @@ module.exports = {
       WHERE chefs.id = $1
       GROUP BY chefs.id
       `,[id], function (err, results) {
-      if (err) throw `Database error: ${err}`
+      const error = `Database error: ${err}`
+      if (err) throw error
       callback(results.rows)
     })
   }

@@ -6,15 +6,17 @@
 
 {% block content %}
 <div class="bodyChefs">
-<h1>Gerenciar chefs</h1>
-<a href="/admin/chefs/create">Novo chef</a>
+    <div class="indexChefs">
+        <p>Gerenciar chefs</p>
+        <a class="New" href="/admin/chefs/create">Novo chef</a>
+    </div>
 <div class="listChefs">
 {% for chef in chefs %}
 <div class="infoChef">
     <div class="avatarChef">
         <img src="{{chef.avatar_url}}">
     </div>
-    <div>
+    <div class="cardChefDescription">
         <div class="nameChef">{{chef.name}}</div>
         <a href="/admin/chefs/{{chef.id}}">Visualizar</a>
     </div>

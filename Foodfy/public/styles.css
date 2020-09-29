@@ -268,17 +268,27 @@ header.headerAdmin a.active{
     height: 80px;
     border-radius: 16px;
 }
-.cardAdminDescription h2 {
+.cardAdminDescription{
+    padding-left: 20px;
+}
+.cardAdminDescription p:nth-child(1) {
     font-family: "Roboto", sans-serif;
-    
+    padding-bottom: 5px;
     font-size: 18px;
     color: #111111;
 }
-.cardAdminDescription h3 {
+.cardAdminDescription p:nth-child(2) {
     font-family: "Roboto", sans-serif;
-    
+    padding-bottom: 10px;
     font-size: 14px;
     color: #777;
+}
+.cardAdminDescription a {
+    text-decoration: none;
+    color:  #6558C3;
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 14px;
 }
 .showAdmin{
     display: grid;
@@ -385,9 +395,42 @@ header.headerAdmin a.active{
 }
 
 /* CHEFS */
-.bodyChefs h1{
+.indexChefs{
+    display: grid;
+    grid-template-columns: 1fr 120px;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+.bodyChefs p {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 24px;
+    color: #111111;
+}
+.indexRecipes{
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.bodyRecipes p {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 24px;
+    color: #111111;
+}
+.New {
+    background: #6558C3;
+    border-radius: 4px;
+    border-radius: 4px; 
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 8px;
+    text-decoration: none;
+    text-align: center;
+    width: ;
 }
 .listChefs {
     display: grid;
@@ -415,10 +458,17 @@ header.headerAdmin a.active{
     font-weight: bold;
     font-size: 24px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 1fr 120px;
     align-items: center;
     width: 100%;
 }
+.titleChef p {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 24px;
+    color: #111111;
+}
+
 .titleChef a {
     text-decoration: none;
     text-align: center;
@@ -517,4 +567,16 @@ button[type="submit"].deleteChef {
     width: 100%;
     height: 280px;
     border-radius: 15px;
+}
+.countRecipesNumber p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #777777;
+    text-align: center;
+}
+.chefNameShow p{
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 36px;
+    color: #111111;
 }

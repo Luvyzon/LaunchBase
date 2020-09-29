@@ -37,9 +37,7 @@ module.exports = {
     })
   },
   put (req, res) {
-    Chef.update(req.body, function(err) {
-      if (err) throw `Database error: ${err}`
-
+    Chef.update(req.body, function () {
       return res.redirect(`/admin/chefs/${req.body.id}`)
     })
   },

@@ -6,7 +6,7 @@
 
 {% block content%}
     <div>
-     <form action="/admin/recipes?_method=DELETE" method="POST">
+     <form action="/admin/recipes?_method=DELETE" id="deleteRecipe" method="POST">
         <button type="submit" style="background-color: red;color: white;border-radius: 4px;text-decoration: none;text-align: center;">DELETAR RECEITA</button>
     <input type="hidden" name="id" value="{{recipe.id}}">
     </form>
@@ -65,4 +65,14 @@
     </form>
 
 <script src="/public/scriptsAdd.js"></script>
+<script>
+    const formDelete = document.querySelector("#deleteRecipe")
+    formDelete.addEventListener("submit", function(event) {
+        const confirmation = confirm("Deseja deletar?")
+        
+        if(!confirmation) {
+            event.preventDefault()
+        }
+    })
+</script>
 {% endblock content %}
