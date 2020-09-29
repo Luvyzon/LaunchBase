@@ -18,15 +18,14 @@
     </form>
     <form class="formDeleteChef" action="/admin/chefs?_method=DELETE" method="POST">
         <input type="hidden" name="id" value="{{chef.id}}">
-        <script>
-        const deleteButtom = document.querySelector('.formDeleteChef')
-        if ({{total}} >= 1) {
-        <p>Não é Possivel deletar este Chef, possui receitas cadastradas</p>
-        } else {
-          <button class="deleteChef" type="submit" id="deleteChef">Deletar Chef</button>
-        }
-        </script>
-       
+    
+        {% if total >= 1 %}
+            <p class="messageErrorDelete">Não é Possivel deletar este Chef porque ele possui receitas cadastradas!</p>
+        {% else %}
+            <button class="deleteChef" type="submit" id="deleteChef">Deletar Chef</button>
+        {% endif %}      
+                
+           
     </form>
 </div>
 {% endblock content %}

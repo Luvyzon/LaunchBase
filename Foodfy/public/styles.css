@@ -444,6 +444,9 @@ button[type="submit"].deleteChef {
     color: #FFFFFF;
     padding: 8px;
 }
+.messageErrorDelete{
+    color: red;
+}
 .itemChef div{
     font-family: "Roboto";
     font-weight: bold;
