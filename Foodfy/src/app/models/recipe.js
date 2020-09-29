@@ -80,7 +80,6 @@ module.exports = {
     ORDER BY chefs.id
     `, [id], function (err, results) {
       if (err) throw `Database error: ${err}`
-      console.log(results.rows)
       callback(results.rows[0])
     })
   }

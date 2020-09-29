@@ -8,12 +8,12 @@
             <h1>Receita: {{recipe.title}}</h1>
             <a href="/admin/recipes/{{recipe.id}}/edit">Editar Receita</a>
         </div>
-        <div class="showAdminImage">
-            <img src="{{recipe.image}}">
+        <div class="showRecipeImage">
+            <img class="cardRecipeImage" src="{{recipe.image_url}}">
         </div>
         <div class="showAdminContentTitle">
             <div>{{recipe.title}}</div>
-            <div>por {{recipe.name}}</div>
+            <div>por {{chef.name}}</div>
         </div>
         <div class="showAdminContent">
             <div class="showAdminIngredients">
