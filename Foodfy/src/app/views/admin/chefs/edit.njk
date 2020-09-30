@@ -6,25 +6,24 @@
 
 {% block content %}
 <div class="bodyChefs">
-    
-    
-    <form class="adminChefFields" method="POST" action="/admin/chefs?_method=PUT">
-    <div class="titleChef">
+    <div class="titleChefEdit">
         <div><p>Editar Chef<p></div>
-        <button type="submit">Salvar Chef</button>
         
+        {% if total >= 1 %}
+            <p class="messageErrorDelete">Não é Possivel deletar este Chef porque ele possui receitas cadastradas!</p>
+        {% else %}
+            <button form="form-delete" class="deleteChef" type="submit" id="deleteChef">Deletar</button>
+        {% endif %}  
+        <button form="formUpdateChef" type="submit">Salvar Chef</button>    
     </div>
+    
+    <form id="formUpdateChef" class="adminChefFields" method="POST" action="/admin/chefs?_method=PUT">
+    
         {% include 'admin/chefs/fields.njk' %}
          <input type="hidden" name="id" value="{{chef.id}}">
     </form>
     <form class="formDeleteChef" id="form-delete" action="/admin/chefs?_method=DELETE" method="POST">
-        <input type="hidden" name="id" value="{{chef.id}}">
-    
-        {% if total >= 1 %}
-            <p class="messageErrorDelete">Não é Possivel deletar este Chef porque ele possui receitas cadastradas!</p>
-        {% else %}
-            <button class="deleteChef" type="submit" id="deleteChef">Deletar Chef</button>
-        {% endif %}      
+        <input type="hidden" name="id" value="{{chef.id}}">      
         
            
     </form>

@@ -4,10 +4,12 @@ const { date } = require('../../libs/utils')
 module.exports = {
   all (callback) {
     db.query(`
-  SELECT recipes.*
-  FROM recipes
-  ORDER BY recipes.id
-  `, function (err, results) {
+    SELECT *
+    FROM chefs
+    INNER JOIN recipes
+    ON chefs.id = recipes.chef_id
+    ORDER BY chefs.id
+    `, function (err, results) {
       const error = `Database error: ${err}`
       if (err) throw error
       callback(results.rows)
@@ -49,19 +51,6 @@ module.exports = {
       callback(results.rows[0])
     })
   },
-  findChefRecipeList (callback) {
-    db.query(`
-    SELECT chefs.id, chefs.name, recipes.chef_id
-    FROM chefs
-    INNER JOIN recipes
-    ON chefs.id = recipes.chef_id
-    ORDER BY chefs.id
-    `, function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows[0])
-    })
-  },
   create (data, callback) {
     const query = `
     INSERT INTO recipes (
@@ -76,7 +65,7 @@ module.exports = {
     RETURNING id
     `
     const values = [
-      data.author,
+      data.chef_id,
       data.image_url,
       data.title,
       data.ingredients,
@@ -119,7 +108,7 @@ module.exports = {
   delete (id, callback) {
     db.query(`
       DELETE FROM recipes
-      WHERE id = $1    
+      WHERE recipes.id = $1    
     `, [id], function (err) {
       const error = `Database error: ${err}`
       if (err) throw error

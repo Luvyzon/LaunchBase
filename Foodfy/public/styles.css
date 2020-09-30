@@ -511,6 +511,49 @@ header.headerAdmin a.active{
     font-size: 18px;
     font-family: 'Roboto';
 }
+.titleChefEdit{
+    display: grid;
+    grid-template-columns: 1fr 100px 140px;
+    align-items: center;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 24px;
+    display: grid;
+}
+.titleChefEdit p:nth-child(1){
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 24px;
+    color: #111111;
+}
+.titleChefEdit p:nth-child(2){
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 10px;
+    color: red;
+}
+.titleChefEdit button[type="submit"]:nth-child(2){
+    background: red;
+    border-radius: 4px; 
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 4px;
+} 
+.titleChefEdit button[type="submit"]:nth-child(3){
+    background: #6558C3;
+    border-radius: 4px; 
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 4px;
+    margin-left: 10px;
+}
 .titleChef {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -544,10 +587,6 @@ header.headerAdmin a.active{
     color: #FFFFFF;
     padding: 8px;
 } 
-
-.messageErrorDelete{
-    color: red;
-}
 .itemChef div{
     font-family: "Roboto";
     font-weight: bold;

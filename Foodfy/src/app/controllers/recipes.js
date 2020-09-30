@@ -3,9 +3,7 @@ const Recipe = require('../models/recipe.js')
 module.exports = {
   index (req, res) {
     Recipe.all(function (recipes) {
-      Recipe.findChefRecipeList(function (chef) {
-        return res.render('admin/recipes/index', { recipes, chef })
-      })
+      return res.render('admin/recipes/index', { recipes })
     })
   },
   create (req, res) {
@@ -15,6 +13,8 @@ module.exports = {
   },
   show (req, res) {
     Recipe.findByID(req.params.id, function (recipe) {
+      recipe.ingredients.pop()
+      recipe.preparation.pop()
       Recipe.findChefRecipe(req.params.id, function (chef) {
         return res.render('admin/recipes/show', { recipe, chef })
       })
@@ -22,15 +22,20 @@ module.exports = {
   },
   edit (req, res) {
     Recipe.findByID(req.params.id, function (recipe) {
-      Recipe.find(function(chefs) {
+      Recipe.find(function (chefs) {
         return res.render('admin/recipes/edit', { recipe, chefs })
       })
     })
   },
   post (req, res) {
+    const keys = Object.keys(req.body)
+    for (key of keys) {
+      if (req.body[key] == "") {
+        return res.send("Please, fill all fields")
+      }
+    }
     if (req.body.author == "") {
-      const empty = ('por favor selecione um chef')
-      res.send(empty)
+      res.send('por favor selecione um chef')
     } else {
       Recipe.create(req.body, function (recipe) {
         return res.redirect('/admin')
@@ -43,7 +48,7 @@ module.exports = {
     })
   },
   delete (req, res) {
-    Recipe.delete(req.params.id, function() {
+    Recipe.delete(req.body.id, function () {
       return res.redirect('/admin/recipes')
     })
   }
