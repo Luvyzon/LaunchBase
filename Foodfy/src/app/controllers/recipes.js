@@ -28,9 +28,14 @@ module.exports = {
     })
   },
   post (req, res) {
-    Recipe.create(req.body, function (recipe) {
-      return res.redirect('/admin')
-    })
+    if (req.body.author == "") {
+      const empty = ('por favor selecione um chef')
+      res.send(empty)
+    } else {
+      Recipe.create(req.body, function (recipe) {
+        return res.redirect('/admin')
+      })
+    }
   },
   put (req, res) {
     Recipe.update(req.body, function () {

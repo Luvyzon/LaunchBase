@@ -84,7 +84,6 @@ module.exports = {
       data.information,
       date(Date.now()).iso
     ]
-
     db.query(query, values, function (err, results) {
       const error = `Database error: ${err}`
       if (err) throw error
