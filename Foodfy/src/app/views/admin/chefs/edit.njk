@@ -14,6 +14,7 @@
         {% else %}
             <button form="form-delete" class="deleteChef" type="submit" id="deleteChef">Deletar</button>
         {% endif %}  
+        
         <button form="formUpdateChef" type="submit">Salvar Chef</button>    
     </div>
     
@@ -24,7 +25,7 @@
     </form>
     <form class="formDeleteChef" id="form-delete" action="/admin/chefs?_method=DELETE" method="POST">
         <input type="hidden" name="id" value="{{chef.id}}">      
-        
+        <input type="hidden" name="total" value="{{chef.total}}">
            
     </form>
 </div>
@@ -38,4 +39,5 @@
         }
     })
 </script>
+
 {% endblock content %}
