@@ -1,0 +1,27 @@
+{% extends "site/layout.njk" %}
+    {%block head%}
+        <title>Receitas</title>
+    {%endblock%}
+
+    {% block header %}
+        <input type="text">
+    {% endblock header %}
+    
+    {% block content %}
+        <section class="cards">
+         {% for recipe in recipes %}
+                <div class="cardRecipe">
+                    <a href="/recipes/{{recipe.id}}">
+                        <img class="cardRecipeImage" src="{{recipe.image_url}}">
+                    </a>
+                    <div class="cardRecipeDescription">
+                    <p>{{recipe.title}}</p>
+                    <p>por {{recipe.name}}</p>
+                    </div>
+                    
+                </div>
+                <input type="hidden" name="id" value="{{chef.id}}">
+            {%endfor%}
+    
+        </section>
+    {% endblock %}

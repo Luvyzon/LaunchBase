@@ -1,0 +1,43 @@
+{% extends "site/layout.njk" %}
+
+{%block head%}
+    <title>Receita de {{recipe.title}}</title>
+{%endblock%}
+
+{% block content %}
+
+     <div class="showRecipeImage">
+            <img class="cardRecipeImage" src="{{recipe.image_url}}">
+        </div>
+        <div class="showAdminContentTitle">
+            <div>{{recipe.title}}</div>
+            <div>por {{chef.name}}</div>
+        </div>
+        <div class="showAdminContent">
+            <div class="showAdminIngredients">
+                <div>Ingredientes</div>
+                
+                <ul>
+                    {% for ingredient in recipe.ingredients%}
+                        <li>- {{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="showAdminSteps">
+                <div>Modo de Preparo</div>
+                <ul>
+                    {% for step in recipe.preparation %}
+                        <li>- {{step}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="showAdminInfo">
+                <div>Informações adicionais</div>
+                <div>{{recipe.information}}</div>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}
+

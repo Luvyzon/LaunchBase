@@ -6,7 +6,7 @@
     padding: 0;
     border: 0;
 }
-
+htmk, body{height: 100%;}
 .body{
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
@@ -24,18 +24,6 @@ header a{
     padding: 30px;
 }
 
-.homebuttom{
-    font-size: x-large;
-    margin-right: 90px;
-    margin-left: 230px;
-  
-}
-.aboutbuttom{
-    
-    font-size: 16px;
-    line-height: 19px;
-    font-family: "Roboto-Regular";
-}
 .recipesbuttom{
     font-size: 16px;
     line-height: 19px;
@@ -128,80 +116,36 @@ header a{
 }
 
 /*====== PAGE Receita ========*/
-.recipeimg{
-    width: 100%;
-    border-radius: 15px;
-    height: 10%;
+.cardRecipe a {
+    text-decoration: none;
 }
-.recipetitle{
-    text-align: center;
+.cardRecipeImage{
+    width: 300px;
+    height: 140px;
+    border-radius: 16px;
 }
-.recipehide{
-    display: flex;
-    
-}
-.recipeh1{
-    font-family: "Roboto-Bold";
-    font-size: 36px;
-    color: #111;
-}
-.recipeauthor{
-    font-family: "Roboto-Regular";
-    color: #777;
-    font-size: 20px;
-}
-.recipecontent{
-    font-size: 24px;
-    font-family: "Roboto-Bold";
-}
-.recipeshow1{
-    font-size: 12px;
-    font-family: "Roboto-Bold";
-    color: #999;
-    
-}
-.recipeshow2{
-    font-size: 12px;
-    font-family: "Roboto-Bold";
-    color: #999;
-}
-.recipeshow3{
-    font-size: 12px;
-    font-family: "Roboto-Bold";
-    color: #999;
-}
-.recipelist1{
-    display: none;
-}
-.recipelist1show{
-    display: block;
-}
-.recipelist2{
-    display: none;
-}
-.recipelist2show{
-    display: block;
-}
-.recipelist3{
-    display: none;
-}
-.recipelist3show{
-    display: block;
-}
-.recipelist p{
-    font-family: "Roboto-Regular";
+.cardRecipeDescription p:nth-child(1) {
+    font-family: "Roboto", sans-serif;
+    padding-top: 20px;
+    padding-bottom: 5px;
     font-size: 18px;
-    color: #444;
-    
+    color: #111111;
+}
+.cardRecipeDescription p:nth-child(2) {
+    font-family: "Roboto", sans-serif;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #777;
 }
 /*====== FOOTER========*/
 footer{
-    
-    height: 62px;
+    position: absolute;
+    bottom: 0;
     width: 100%;
     background-color: #EEEE;
     text-align: center;
     margin-top: 50px;
+    padding-bottom: 10px;
 }
 footer p{
     padding-top: 23px;

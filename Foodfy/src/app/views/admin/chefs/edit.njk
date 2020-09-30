@@ -9,7 +9,7 @@
     <div class="titleChefEdit">
         <div><p>Editar Chef<p></div>
         
-        {% if total >= 1 %}
+        {% if chef.total >= 1 %}
             <p class="messageErrorDelete">Não é Possivel deletar este Chef porque ele possui receitas cadastradas!</p>
         {% else %}
             <button form="form-delete" class="deleteChef" type="submit" id="deleteChef">Deletar</button>

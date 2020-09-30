@@ -2,30 +2,18 @@ const express = require('express')
 const routes = express.Router()
 const recipes = require('./app/controllers/recipes.js')
 const chefs = require('./app/controllers/chefs.js')
+const site = require('./app/controllers/site.js')
 const { Router } = require('express')
 
 // PAGE INTIAL
 routes.get('/', function (_req, res) {
-  return res.render('site/inicio', { items: recipes })
+  return res.redirect('/index')
 })
-routes.get('/sobre', function (_req, res) {
-  return res.render('site/sobre')
-})
-routes.get('/receitas', function (_req, res) {
-  return res.render('site/receitas', { items: recipes })
-})
-routes.get('/recepts', function (req, res) {
-  const id = req.query.id
-  const recipe = recipes.find(function (recipe) {
-    if (recipe.id == id) {
-      return true
-    }
-  })
-  if (!recipe) {
-    return res.send('Receita não encontrada')
-  }
-  return res.render('site/recepts', { recipe })
-})
+routes.get('/index', site.index)
+routes.get('/about', site.about)
+routes.get('/recipes', site.recipes)
+routes.get('/chefs', site.chefs)
+routes.get('/recipes/:id', site.show)
 
 // ADMIN RECIPES
 routes.get('/admin', function (req, res) {

@@ -1,0 +1,26 @@
+{% extends "site/layout.njk" %}
+
+{% block head %}
+<title>Chefs Foodfy</title>
+{% endblock head %}
+
+{% block content %}
+
+<div class="listChefs">
+{% for chef in chefs %}
+
+<input type="hidden" value="{{chef.id}}">
+<div class="infoChef">
+    <div class="avatarChef">
+        <img src="{{chef.avatar_url}}">
+    </div>
+    <div class="cardChefDescription">
+        <div class="nameChef">{{chef.name}}</div>
+        <p>{{chef.total}} receitas</p>
+    </div>
+</div>
+{% endfor %}
+
+</div>
+</div>
+{% endblock content %}

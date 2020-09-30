@@ -12,22 +12,15 @@ module.exports = {
   show (req, res) {
     Chef.find(req.params.id, function (chef) {
       if (!chef) return res.send('Chef not found!')
-
       Chef.findRecipesByChef(req.params.id, function (recipes) {
-        Chef.countTotalRecipes(req.params.id, function (total) {
-          total = total[0].total_recipes
-          return res.render('admin/chefs/show', { chef, recipes, total })
-        })
+        return res.render('admin/chefs/show', { chef, recipes })
       })
     })
   },
   edit (req, res) {
     Chef.find(req.params.id, function (chef) {
       if (!chef) return res.send('Chef not found!')
-      Chef.countTotalRecipes(req.params.id, function (total) {
-        total = total[0].total_recipes
-        return res.render('admin/chefs/edit', { chef, total })
-      })
+      return res.render('admin/chefs/edit', { chef })
     })
   },
   // POST

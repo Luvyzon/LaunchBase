@@ -13,7 +13,7 @@
 <div class="presentationChef">
     <img src="{{ chef.avatar_url }}">
     <div class="chefNameShow"><p>{{ chef.name }}</p></div>
-    <div class="countRecipesNumber"><p>{{ total }} receitas</p></div>
+    <div class="countRecipesNumber"><p>{{ chef.total }} receitas</p></div>
 </div>
 <div class="titleChef">Receitas</div>
 <div class="listChefRecipes">
@@ -22,7 +22,7 @@
                 <img class="cardChefImage" src="{{recipe.image_url}}">
                 <div class="cardChefDescription">
                 <p>{{recipe.title}}</p>
-                <p>por {{recipe.author}}</p>
+                <p>por {{chef.name}}</p>
                 <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
                 </div>
             </div>
