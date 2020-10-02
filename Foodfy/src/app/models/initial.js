@@ -14,14 +14,26 @@ module.exports = {
       callback(results.rows)
     })
   },
-  allRecipes (callback) {
-    db.query(`
+  allRecipes (params) {
+    const { filter, callback } = params
+
+    let query = "",
+        filterQuery = ""
+
+    if (filter) {
+      filterQuery = `${query}
+      WHERE recipes.title ILIKE '%${filter}%'
+      `
+    }
+    query = `
     SELECT *
-    FROM chefs
-    INNER JOIN recipes
-    ON chefs.id = recipes.chef_id
-    ORDER BY chefs.id
-    `, function (err, results) {
+    FROM recipes
+    LEFT JOIN chefs
+    ON (recipes.chef_id = chefs.id)
+    ${filterQuery}
+    ORDER BY recipes.id
+    `
+    db.query(query, function (err, results) {
       const error = `Database error: ${err}`
       if (err) throw error
       callback(results.rows)

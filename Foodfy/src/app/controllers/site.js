@@ -9,9 +9,15 @@ module.exports = {
     return res.render('site/about.njk')
   },
   recipes (req, res) {
-    Site.allRecipes(function (recipes) {
-      return res.render('site/recipes.njk', { recipes })
-    })
+    let { filter } = req.query
+    
+    const params = {
+      filter,
+      callback (recipes) {
+        return res.render('site/recipes.njk', { recipes, filter })
+      }
+    }
+    Site.allRecipes(params)
   },
   chefs (req, res) {
     Site.allChefs(function (chefs) {

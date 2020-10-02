@@ -16,6 +16,7 @@ header{
     height: 93px;
     width: 100%;
     padding-top: 30px;
+    background: #DDD;
     
 }
 header a{
@@ -23,7 +24,11 @@ header a{
     color: #111;
     padding: 30px;
 }
-
+header form input {
+    background: #FFFFFF;
+border: 1px solid #DDDDDD;
+border-radius: 4px;
+}
 .recipesbuttom{
     font-size: 16px;
     line-height: 19px;
