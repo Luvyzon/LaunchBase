@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 *{
     margin: 0;
@@ -9,25 +8,43 @@
 htmk, body{height: 100%;}
 .body{
     display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-columns: 1fr 6fr 1fr;
 }
 /*=======HEADER========*/
 header{  
-    height: 93px;
+    height: 60px;
     width: 100%;
-    padding-top: 30px;
-    background: #DDD;
-    
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    padding-top: 36px;
+}
+header a:nth-child(1){
+    padding-right: 120px;
+    font-family: 'Cochin';
+    font-size: 28px;
+    color: #111111;
+    letter-spacing: 1.65px;
 }
 header a{
     text-decoration: none;
     color: #111;
     padding: 30px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Roboto-Regular', sans-serif;
 }
 header form input {
     background: #FFFFFF;
 border: 1px solid #DDDDDD;
 border-radius: 4px;
+width: 290px;
+height: 40px;
+}
+.filterSearch {
+    padding-top: 24px;
+    font-family: 'Roboto-Bold', sans-serif;
+    font-size: 24px;
+    color: #111111; 
 }
 .recipesbuttom{
     font-size: 16px;
@@ -84,7 +101,7 @@ border-radius: 4px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
     width: 100%;
-
+    padding-top: 20px;
 }
 
 .card img{
@@ -125,8 +142,8 @@ border-radius: 4px;
     text-decoration: none;
 }
 .cardRecipeImage{
-    width: 300px;
-    height: 140px;
+    width: 100%;
+    height: 200px;
     border-radius: 16px;
 }
 .cardRecipeDescription p:nth-child(1) {
@@ -601,11 +618,6 @@ header.headerAdmin a.active{
     font-family: 'Roboto';
     font-weight: bold;
     font-size: 14px;
-}
-.cardRecipeImage{
-    width: 100%;
-    height: 280px;
-    border-radius: 15px;
 }
 .countRecipesNumber p{
     font-family: 'Roboto', sans-serif;

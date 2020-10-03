@@ -8,13 +8,16 @@
             <input 
             type="text"
             name="filter"
-            placeholder="tituto, ingrediente ou chef"
+            placeholder="Buscar uma Receita"
             >
-            <button type="submit">Filtrar</button>
+            <button class="New" type="submit">Buscar</button>
             </form>
     {% endblock header %}
     
     {% block content %}
+    {% if filter %}
+        <p class="filterSearch">Buscando por "{{filter}}"</p>
+    {% endif %}
         <section class="cards">
          {% for recipe in recipes %}
                 <div class="cardRecipe">
