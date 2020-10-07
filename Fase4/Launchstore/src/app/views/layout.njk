@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <link rel="stylesheet" href="/public/styles.css">
+        {% block head %}
+
+      {% endblock %}
+    </head>
+    <body>
+        <header>
+            <div class="links">
+                <a href="/instructors">INSTRUCTORS</a>
+                <a href="/members">MEMBERS</a>
+            </div>
+        </header>
+        {% block content %}
+
+        {% endblock %}
+
+        <script src="/public/scripts.js"></script>
+    </body>
+</html>
