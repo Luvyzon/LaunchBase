@@ -3,21 +3,20 @@
     <head>
         
         <link rel="stylesheet" href="/public/styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         {% block head %}
 
-      {% endblock %}
+        {% endblock %}
     </head>
     <body>
-        <header>
-            <div class="links">
-                <a href="/instructors">INSTRUCTORS</a>
-                <a href="/members">MEMBERS</a>
-            </div>
-        </header>
+        {% include "parts/header.njk" %}
+
         {% block content %}
 
         {% endblock %}
 
-        <script src="/public/scripts.js"></script>
+        {% include "parts/footer.njk" %}
+
+       
     </body>
 </html>
