@@ -1,0 +1,96 @@
+<div class="item">
+    <div>Categoria</div>
+    <div>
+        <select name="category_id">
+            {% for category in categories %}
+            
+            <option value="{{category.id}}" 
+                    {% if product.category_id == category.id %} 
+                    selected 
+                    {% endif %}>{{category.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Nome do Produto</div>
+    <div>
+        <input 
+        name="name" 
+        type="text" 
+        value="{{product.name}}" 
+        placeholder="Produto">
+    </div>
+</div>
+
+<div class="item">
+    <div>Descrição</div>
+    <div>
+        <textarea 
+        name="description" 
+        value="{{product.description}}" 
+        placeholder="Descrição do Produto"
+        cols="30" rows="10"></textarea>
+    </div>
+</div>
+
+<!-- FOTO DO PRODUTO      -->
+
+<div class="item">
+    <div>Preço</div>
+    <div>
+        <input 
+        type="number" 
+        name="price" 
+        value="{{product.price}}"
+        placeholder="0,00">
+        <!--   MASCARA DE DINHEIRO -->
+    </div>
+    {% if product.old_price %}
+    <input 
+    type="number" 
+    name="old_price" 
+    value="{{product.old_price}}">
+    {% endif %}
+</div>
+
+<div class="item">
+    <div>Quantidade</div>
+    <input 
+    type="number" 
+    name="quantity" 
+    value="{{product.quantity}}"
+    placeholder="Quantidade do Produto">
+</div>
+
+{% if product.status %}
+
+
+<div class="item">
+    <div>Status</div>
+    <div>
+        <span>
+            <input 
+            type="radio"
+            name="status"
+            value="1"
+            {% if product.status == 1 %}
+            checkked
+            {% endif %}
+            > Disponivel
+        </span>
+        <span>
+            <input 
+            type="radio"
+            name="status"
+            value="0"
+            {% if product.status == 0 %}
+            checkked
+            {% endif %}
+            > Indisponivel
+        </span>
+    </div>
+</div>
+
+{% endif %}
