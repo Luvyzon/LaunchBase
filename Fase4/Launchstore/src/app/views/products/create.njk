@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<section class="container_form">
+<section class="container form">
     <form method="POST" action="/products">
         <div class="header">
             <h3>Cadastrar Produto</h3>
@@ -15,6 +15,7 @@
         <div class="fields">
             {% include "products/fields.njk" %}
         </div>
+        <button class="button" type="submit">Salvar</button>
     </form>
 </section>
 

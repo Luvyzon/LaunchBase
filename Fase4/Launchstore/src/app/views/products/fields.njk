@@ -31,7 +31,7 @@
         name="description" 
         value="{{product.description}}" 
         placeholder="Descrição do Produto"
-        cols="30" rows="10"></textarea>
+        cols="30" rows="10">{{product.description}}</textarea>
     </div>
 </div>
 
@@ -41,18 +41,20 @@
     <div>Preço</div>
     <div>
         <input 
-        type="number" 
+        type="text" 
         name="price" 
         value="{{product.price}}"
-        placeholder="0,00">
-        <!--   MASCARA DE DINHEIRO -->
+        placeholder="0,00"
+        onkeydown="Mask.apply(this,'formatBRL')">
     </div>
+    <!--
     {% if product.old_price %}
     <input 
-    type="number" 
+    type="text" 
     name="old_price" 
     value="{{product.old_price}}">
     {% endif %}
+    -->
 </div>
 
 <div class="item">
@@ -64,11 +66,11 @@
     placeholder="Quantidade do Produto">
 </div>
 
-{% if product.status %}
+{% if (product.status == '1') or (product.status == '0') %}
 
 
 <div class="item">
-    <div>Status</div>
+    <div>Disponivel ?</div>
     <div>
         <span>
             <input 
@@ -76,9 +78,9 @@
             name="status"
             value="1"
             {% if product.status == 1 %}
-            checkked
+            checked
             {% endif %}
-            > Disponivel
+            > sim
         </span>
         <span>
             <input 
@@ -86,9 +88,9 @@
             name="status"
             value="0"
             {% if product.status == 0 %}
-            checkked
+            checked
             {% endif %}
-            > Indisponivel
+            > não
         </span>
     </div>
 </div>
