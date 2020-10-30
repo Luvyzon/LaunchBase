@@ -14,7 +14,38 @@
         <div class="showAdminContent">
             <div class="itemForm">
                 <div class="itemFormTitle">Imagem da Receita</div>
-                <input type="text" name="image_url" id="recipe_image" placeholder="http://www..........">
+                <div>
+                    <div class="photos-upload">
+                        <i class="material-icons">add</i> 
+                        <input 
+                            id="photos-input"
+                            type="file" 
+                            name="photos" 
+                            multiple
+                            accept="image/*"
+                            onchange="PhotosUpload.handleFileInput(event)"
+                        >
+                        
+                    </div>
+                    <div id="photos-preview">
+                        {% if files %}
+                            {% for image in files %}
+                                <div class="photo" id="{{image.id}}">
+                                    <img src="{{image.src}}" alt="{{image.name}}">
+                                    <i 
+                                    class="material-icons"
+                                    onclick="PhotosUpload.removeOldPhoto(event)"
+                                    >
+                                    close
+                                    </i>
+
+                                </div>
+
+                            {% endfor %}
+                            <input type="hidden" name="removed_files">
+                        {% endif %}
+                    </div>
+                </div>
             </div>
             <div class="itemForm">
                 <div class="itemFormTitle">Titulo</div>

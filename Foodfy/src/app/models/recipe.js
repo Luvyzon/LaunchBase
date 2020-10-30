@@ -16,40 +16,28 @@ module.exports = {
     })
   },
   find (callback) {
-    db.query(`
+    return db.query(`
     SELECT *
     FROM chefs
     ORDER BY chefs.id
-    `, function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows)
-    })
+    `)
   },
-  findByID (id, callback) {
-    db.query(`
+  findByID (id) {
+    return db.query(`
     SELECT *
     FROM recipes
     WHERE recipes.id = $1
-    `, [id], function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows[0])
-    })
+    `, [id])
   },
-  findChefRecipe (id, callback) {
-    db.query(`
+  findChefRecipe (id) {
+    return db.query(`
     SELECT chefs.id, chefs.name, recipes.chef_id
     FROM chefs
     INNER JOIN recipes
     ON chefs.id = recipes.chef_id
     WHERE recipes.id = $1
     ORDER BY chefs.id
-    `, [id], function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows[0])
-    })
+    `, [id])
   },
   create (data, callback) {
     const query = `
@@ -73,11 +61,7 @@ module.exports = {
       data.information,
       date(Date.now()).iso
     ]
-    db.query(query, values, function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows)
-    })
+    return db.query(query, values)
   },
   update (data, callback) {
     const query = `
