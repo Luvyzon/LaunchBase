@@ -3,17 +3,13 @@ const { date } = require('../../libs/utils')
 
 module.exports = {
   all (callback) {
-    db.query(`
+    return db.query(`
     SELECT *
     FROM chefs
     INNER JOIN recipes
     ON chefs.id = recipes.chef_id
     ORDER BY chefs.id
-    `, function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows)
-    })
+    `)
   },
   find (callback) {
     return db.query(`
@@ -43,18 +39,16 @@ module.exports = {
     const query = `
     INSERT INTO recipes (
       chef_id,
-      image_url,
       title,
       ingredients,
       preparation,
       information,
       created_at
-    ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+    ) VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING id
     `
     const values = [
       data.chef_id,
-      data.image_url,
       data.title,
       data.ingredients,
       data.preparation,
@@ -67,36 +61,37 @@ module.exports = {
     const query = `
     UPDATE recipes SET
       chef_id=($1),
-      image_url=($2),
-      title=($3),
-      ingredients=($4),
-      preparation=($5),
-      information=($6)
-      WHERE id = $7
+      title=($2),
+      ingredients=($3),
+      preparation=($4),
+      information=($5)
+      WHERE id = $6
     `
     const values = [
       data.chef_id,
-      data.image_url,
       data.title,
       data.ingredients,
       data.preparation,
       data.information,
       data.id
     ]
-    db.query(query, values, function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback()
-    })
+    return db.query(query, values)
   },
-  delete (id, callback) {
-    db.query(`
+  delete (id) {
+    
+    db.query(`DELETE FROM recipe_files WHERE recipe_id = $1`, [id])
+    
+    return db.query(`
       DELETE FROM recipes
       WHERE recipes.id = $1    
-    `, [id], function (err) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      return callback()
-    })
+    `, [id])
+  },
+  files (id) {
+    return db.query(`
+    SELECT * 
+    FROM recipe_files
+    INNER JOIN files
+    ON recipe_files.file_id = files.id
+    WHERE recipe_id = $1`, [id])
   }
 }
