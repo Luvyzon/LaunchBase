@@ -22,7 +22,15 @@ module.exports = {
 
     results = await Recipe.findChefRecipe(req.params.id)
     const chef = results.rows[0]
-    return res.render('admin/recipes/show', { recipe, chef })
+
+    results = await Recipe.files(recipe.id)
+    let files = results.rows
+    files = files.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}/${file.path}`
+    }))
+  
+    return res.render('admin/recipes/show', { recipe, chef, files })
   },
   async edit (req, res) {
     let results = await Recipe.findByID(req.params.id)
@@ -95,8 +103,8 @@ module.exports = {
     await Recipe.update(req.body)
     return res.redirect(`/admin/recipes/${req.body.id}`)
   },
-  async delete (req, res) {
-    await Recipe.delete(req.body.id)
+  delete (req, res) {
+    Recipe.delete(req.body.id)
     return res.redirect('/admin/recipes')
   }
 }

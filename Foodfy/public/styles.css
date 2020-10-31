@@ -141,11 +141,7 @@ height: 40px;
 .cardRecipe a {
     text-decoration: none;
 }
-.cardRecipeImage{
-    width: 100%;
-    height: 200px;
-    border-radius: 16px;
-}
+
 .cardRecipeDescription p:nth-child(1) {
     font-family: "Roboto", sans-serif;
     padding-top: 20px;
@@ -450,25 +446,28 @@ header.headerAdmin a.active{
 .product-single .gallery {
     width: 100%;
 }
-.product-single .highlight > img {
+.highlight img {
     width: 100%;
     height: 280px;
-
-    object-fit: none;
-
-    object-position: 50% 50%;
-    border: 1px solid #efefef;
-    cursor: zoom-in;
+    border-radius: 16px;
 }
 .product-single .gallery-preview {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2px;
 }
-.product-single .gallery-preview img {
-    height: 100px;
-    width: 100%;
-
+.showRecipeImage {
+    position: relative;
+}
+.gallery-preview {
+    position: absolute;
+    right: 0;
+}
+.gallery-preview img {
+    height: 50px;
+    width: 50px;
+    
+    border-radius: 4px;
     object-fit: cover;
 
     opacity: 0.6;
@@ -476,8 +475,8 @@ header.headerAdmin a.active{
 
     cursor: pointer;
 }
-.product-single .gallery-preview img:hover,
-.product-single .gallery-preview img.active {
+.gallery-preview img:hover,
+.gallery-preview img.active {
     opacity: 1;
 }
 

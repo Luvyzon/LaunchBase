@@ -79,12 +79,18 @@ module.exports = {
   },
   delete (id) {
     
-    db.query(`DELETE FROM recipe_files WHERE recipe_id = $1`, [id])
-    
-    return db.query(`
-      DELETE FROM recipes
-      WHERE recipes.id = $1    
+    const results = db.query(`
+    SELECT * FROM recipe_files WHERE recipe_id = $1
     `, [id])
+    const recipe = results.rows
+    console.log(recipe)
+
+   // db.query(`DELETE FROM recipe_files WHERE recipe_id = $1`, [id])
+    
+   // return db.query(`
+    //  DELETE FROM recipes
+    //  WHERE recipes.id = $1    
+   // `, [id])
   },
   files (id) {
     return db.query(`
