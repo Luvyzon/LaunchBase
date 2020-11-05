@@ -5,7 +5,14 @@ module.exports = {
   async index (req, res) {
     let results = await Recipe.all()
     const recipes = results.rows
-    return res.render('admin/recipes/index', { recipes })
+
+    results = await Recipe.files(recipe.id)
+    let files = results.rows
+    files = files.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}/${file.path}`
+    }))
+    return res.render('admin/recipes/index', { recipes, files })
   },
   async create (req, res) {
     Recipe.find()
