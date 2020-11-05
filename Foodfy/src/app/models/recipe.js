@@ -1,5 +1,6 @@
 const db = require('../../config/db.js')
 const { date } = require('../../libs/utils')
+const fs = require('fs')
 
 module.exports = {
   all (callback) {
@@ -77,20 +78,43 @@ module.exports = {
     ]
     return db.query(query, values)
   },
-  delete (id) {
-    
-    const results = db.query(`
-    SELECT * FROM recipe_files WHERE recipe_id = $1
-    `, [id])
-    const recipe = results.rows
-    console.log(recipe)
+  async delete (id) {
+    try {
+      const results = await db.query(
+        `
+        SELECT files.*, recipe_id, file_id
+        FROM files
+        LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
+        WHERE recipe_files.recipe_id = $1
+          `, [id]
+      )
+      const files = results.rows
+      
+      await db.query(
+        `
+        DELETE FROM recipe_files
+        WHERE recipe_id = $1
+        `, [id])
+      await db.query(
+        `
+        DELETE FROM recipes
+        WHERE id = $1
+        `, [id])
 
-   // db.query(`DELETE FROM recipe_files WHERE recipe_id = $1`, [id])
-    
-   // return db.query(`
-    //  DELETE FROM recipes
-    //  WHERE recipes.id = $1    
-   // `, [id])
+      files.map(async file => {
+        fs.unlinkSync(`${file.path}`)
+        await db.query(
+        `
+          DELETE FROM files
+          WHERE id = $1
+        `, [file.id])
+      })
+
+      return
+    } catch (err) {
+      console.error(err)
+
+    }
   },
   files (id) {
     return db.query(`

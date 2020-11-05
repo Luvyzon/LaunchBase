@@ -3,16 +3,25 @@ const File = require('../models/file')
 
 module.exports = {
   async index (req, res) {
-    let results = await Recipe.all()
-    const recipes = results.rows
+    try {
+      const results = await Recipe.all()
+      const recipes = results.rows
 
-    results = await Recipe.files(recipe.id)
-    let files = results.rows
-    files = files.map(file => ({
-      ...file,
-      src: `${req.protocol}://${req.headers.host}/${file.path}`
-    }))
-    return res.render('admin/recipes/index', { recipes, files })
+      async function getImage(recipeId) {
+        let results = await Recipe.files(recipeId)
+        let file = results.rows[0]
+        return `${req.protocol}://${req.headers.host}/${file.path}`
+      }
+      const recipesPromise = recipes.map(async recipe => {
+        recipe.image = await getImage(recipe.id)
+        return recipe
+      })
+      const allRecipes = await Promise.all(recipesPromise)
+
+      return res.render('admin/recipes/index', { recipes: allRecipes })
+    } catch (err) {
+      console.log(err)
+    }
   },
   async create (req, res) {
     Recipe.find()
@@ -110,7 +119,7 @@ module.exports = {
     await Recipe.update(req.body)
     return res.redirect(`/admin/recipes/${req.body.id}`)
   },
-  delete (req, res) {
+  async delete (req, res) {
     Recipe.delete(req.body.id)
     return res.redirect('/admin/recipes')
   }
