@@ -2,16 +2,12 @@ const db = require('../../config/db.js')
 const { date } = require('../../libs/utils')
 
 module.exports = {
-  all (callback) {
-    db.query(`
+  all () {
+    return db.query(`
       SELECT chefs.*
       FROM chefs
       ORDER BY chefs.id
-      `, function (err, results) {
-     const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows)
-    })
+      `)
   },
   create (data, callback) {
     const query = `
@@ -35,18 +31,14 @@ module.exports = {
       callback(results.rows)
     })
   },
-  find (id, callback) {
-    db.query(`
+  find (id) {
+    return db.query(`
       SELECT chefs.*, count(recipes) AS total
       FROM chefs
       LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
       WHERE chefs.id = $1
       GROUP BY chefs.id
-      `, [id], function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows[0])
-    })
+      `, [id])
   },
   update (data, callback) {
     const query = `
@@ -75,15 +67,19 @@ module.exports = {
       return callback()
     })
   },
-  findRecipesByChef (id, callback) {
-    db.query(`
+  findRecipesByChef (id) {
+    return db.query(`
     SELECT *
     FROM recipes
     WHERE chef_id = $1
-    `, [id], function (err, results) {
-     const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows)
-    })
+    `, [id])
+  },
+  files (id) {
+    return db.query(`
+    SELECT * 
+    FROM chefs
+    INNER JOIN files
+    ON chefs.file_id = files.id
+    WHERE chefs.id = $1`, [id])
   }
 }

@@ -3,7 +3,7 @@ const { date } = require('../../libs/utils')
 const fs = require('fs')
 
 module.exports = {
-  all (callback) {
+  all () {
     return db.query(`
     SELECT *
     FROM chefs
@@ -12,7 +12,7 @@ module.exports = {
     ORDER BY chefs.id
     `)
   },
-  find (callback) {
+  find () {
     return db.query(`
     SELECT *
     FROM chefs
@@ -36,7 +36,7 @@ module.exports = {
     ORDER BY chefs.id
     `, [id])
   },
-  create (data, callback) {
+  create (data) {
     const query = `
     INSERT INTO recipes (
       chef_id,
@@ -58,7 +58,7 @@ module.exports = {
     ]
     return db.query(query, values)
   },
-  update (data, callback) {
+  update (data) {
     const query = `
     UPDATE recipes SET
       chef_id=($1),

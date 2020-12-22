@@ -7,11 +7,13 @@ module.exports = {
       const results = await Recipe.all()
       const recipes = results.rows
 
+      /* eslint-disable */
       async function getImage(recipeId) {
         let results = await Recipe.files(recipeId)
         let file = results.rows[0]
         return `${req.protocol}://${req.headers.host}/${file.path}`
       }
+      /* eslint-enable */
       const recipesPromise = recipes.map(async recipe => {
         recipe.image = await getImage(recipe.id)
         return recipe
@@ -81,7 +83,7 @@ module.exports = {
     if (req.body.author == "") {
       res.send('por favor selecione um chef')
     } else {
-      let results = await Recipe.create(req.body)
+      const results = await Recipe.create(req.body)
       const recipeId = results.rows[0].id
 
       const filesPromise = req.files.map(file => File.create({ ...file, recipe_id: recipeId }))
@@ -91,7 +93,6 @@ module.exports = {
     }
   },
   async put (req, res) {
-
     const keys = Object.keys(req.body)
     for (key of keys) {
       if (req.body[key] == "" && key != "removed_files") {
