@@ -48,13 +48,21 @@ module.exports = {
 
     try {
 
-      const results = await Chef.create(req.body)
-      const chefId = results.rows[0].id
+      const filesPromise = req.files.map(file => File.createChef({
+        name: file.filename,
+        path: `public/images/${file.filename}`
+      }))
 
-      const filesPromise = req.files.map(file => File.create({ ...file, recipe_id: recipeId }))
-      await Promise.all(filesPromise)
+      const fileId = await Promise.all(filesPromise)
+      console.log(fileId)
+      const values = {
+        name: req.body.name,
+        file_id: JSON.parse(fileId)
+      }
 
-      return res.redirect('/admin/chefs')
+      const chefId = await Chef.create(values)
+
+      return res.redirect(`/admin/chefs/${chefId}`)
     } catch (err) {
       console.log(err)
     }
