@@ -13,23 +13,17 @@ module.exports = {
     const query = `
     INSERT INTO chefs (
       name,
-      avatar_url,
       created_at
-    ) VALUES ($1, $2, $3)
+    ) VALUES ($1, $2)
     RETURNING id
     `
 
     const values = [
       data.name,
-      data.avatar_url,
       date(Date.now()).iso
     ]
 
-    db.query(query, values, function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback(results.rows)
-    })
+    return db.query(query, values)
   },
   find (id) {
     return db.query(`

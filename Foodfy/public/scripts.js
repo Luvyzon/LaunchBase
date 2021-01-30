@@ -10,12 +10,13 @@ for (item of menuItems) {
 const PhotosUpload = {
   input: "",
   preview: document.querySelector('#photos-preview'),
-  uploadLimit: 5,
+  uploadLimit: "",
   files: [],
-  handleFileInput (event) {
+  handleFileInput (event, limit) {
     const { files: fileList} = event.target
     PhotosUpload.input = event.target
 
+    PhotosUpload.uploadLimit = limit
     if (PhotosUpload.hasLimit(event)) return
 
     Array.from(fileList).forEach(file => {

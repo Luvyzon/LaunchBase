@@ -45,21 +45,14 @@ module.exports = {
   },
   // POST
   async post (req, res) {
-    try {
-      for (key of keys) {
-        if (req.body[key] == "") {
-          return res.send("Please, fill all fields")
-        }
-      }
 
-      if (req.files.length == 0) {
-        return res.send('Please, send at least one image')
-      }
+    try {
 
       const results = await Chef.create(req.body)
       const chefId = results.rows[0].id
 
-      await req.files(file => File.create({ ...file, chef_id: chefId }))
+      const filesPromise = req.files.map(file => File.create({ ...file, recipe_id: recipeId }))
+      await Promise.all(filesPromise)
 
       return res.redirect('/admin/chefs')
     } catch (err) {

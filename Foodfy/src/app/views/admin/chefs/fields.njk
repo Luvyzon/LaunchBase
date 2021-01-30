@@ -7,18 +7,27 @@
         value="{{ chef.name }}"
         >
 </div>
+
 <div class="itemChef">
     <div>Avatar</div>
+    
     <div>
-        <div>
-            <input type="text">
-        </div>
-        <div>
+        {% if chef.image %}
+            <div>
+                <input type="text">
+            </div>
+        {% endif %}
+       
+        <div class=upload_photo_chef>
+            <button class="button_send_avatar">Enviar Avatar</button>
             <input 
+                name="avatar_chef"
+                id="input_avatar_chef"
                 type="file"
                 accept="image/*"
+                onchange="ImagesUpload.handleFileInput(event, 1)"
             >
-                            
+                         
         </div>
         
     </div>

@@ -814,3 +814,44 @@ header.headerAdmin a.active{
     font-size: 36px;
     color: #111111;
 }
+#input_avatar_chef {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    width: 139px;
+    height: 37px;
+    opacity: 0;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+.upload_photo_chef {
+    position: relative;
+}
+.button_send_avatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #6558C3;
+    font-family: "Helvetica";
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    border-radius: 4px;
+
+
+    width: 139px;
+    height: 37px;
+
+    display: block;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    
+}
