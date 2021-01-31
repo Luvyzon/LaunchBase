@@ -1,5 +1,7 @@
 const db = require('../../config/db.js')
 const { date } = require('../../libs/utils')
+const file = require('./file.js')
+const fs = require('fs')
 
 module.exports = {
   all () {
@@ -9,7 +11,7 @@ module.exports = {
       ORDER BY chefs.id
       `)
   },
-  create (name, file_id) {
+  create ({ name, fileId }) {
     const query = `
     INSERT INTO chefs (
       name,
@@ -21,7 +23,7 @@ module.exports = {
 
     const values = [
       name,
-      file_id,
+      fileId,
       date(Date.now()).iso
     ]
 
@@ -54,14 +56,28 @@ module.exports = {
       callback()
     })
   },
-  delete (id, callback) {
-    db.query(`
+  async delete (id) {
+    let results = await db.query(`
+    SELECT *
+    FROM chefs
+    WHERE id = $1`, [id])
+    const fileId = results.rows[0].file_id
+
+    results = await db.query(`
+    SELECT *
+    FROM files
+    WHERE id = $1`, [fileId])
+    const file = results.rows[0]
+    await db.query(`
     DELETE FROM chefs
-    WHERE id = $1`, [id], function (err) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      return callback()
-    })
+    WHERE id = $1`, [id])
+
+    fs.unlinkSync(`${file.path}`)
+
+    return db.query(
+      `DELETE FROM files
+      WHERE id = $1
+      `, [file.id])
   },
   findRecipesByChef (id) {
     return db.query(`

@@ -48,11 +48,10 @@ module.exports = {
     try {
       const { filename, path } = req.files[0]
       const file = await File.createChef({ name: filename, path })
-      file_id = file.rows[0].id
-      console.log(file_id)
+      const fileId = file.rows[0].id
 
-      const { name } = req.body
-      const chefId = await Chef.create({ name, file_id })
+      const name = req.body.name
+      const chefId = await Chef.create({ name, fileId })
 
       return res.redirect(`/admin/chefs/${chefId}`)
     } catch (err) {
@@ -64,13 +63,12 @@ module.exports = {
       return res.redirect(`/admin/chefs/${req.body.id}`)
     })
   },
-  delete (req, res) {
+  async delete (req, res) {
     if (req.body.total >= 1) {
       res.send('Não é Possivel deletar este Chef porque ele possui receitas cadastradas!')
     } else {
-      Chef.delete(req.body.id, function () {
-        return res.redirect('/admin/chefs')
-      })
+      Chef.delete(req.body.id)
+      return res.redirect('/admin/chefs')
     }
   }
 }
