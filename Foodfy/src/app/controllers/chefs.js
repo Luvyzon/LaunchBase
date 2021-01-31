@@ -45,22 +45,14 @@ module.exports = {
   },
   // POST
   async post (req, res) {
-
     try {
+      const { filename, path } = req.files[0]
+      const file = await File.createChef({ name: filename, path })
+      file_id = file.rows[0].id
+      console.log(file_id)
 
-      const filesPromise = req.files.map(file => File.createChef({
-        name: file.filename,
-        path: `public/images/${file.filename}`
-      }))
-
-      const fileId = await Promise.all(filesPromise)
-      console.log(fileId)
-      const values = {
-        name: req.body.name,
-        file_id: JSON.parse(fileId)
-      }
-
-      const chefId = await Chef.create(values)
+      const { name } = req.body
+      const chefId = await Chef.create({ name, file_id })
 
       return res.redirect(`/admin/chefs/${chefId}`)
     } catch (err) {

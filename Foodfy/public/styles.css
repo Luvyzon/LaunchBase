@@ -390,8 +390,6 @@ header.headerAdmin a.active{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 8px;
-    width: 100%;
-    margin: 8px 0;
 }
 #photos-preview img{
     width: 100%;
