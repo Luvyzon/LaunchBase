@@ -38,7 +38,7 @@ module.exports = {
       GROUP BY chefs.id
       `, [id])
   },
-  update (data, callback) {
+  update (data) {
     const query = `
       UPDATE chefs SET
         name=($1),
@@ -50,11 +50,7 @@ module.exports = {
       data.avatar_url,
       data.id
     ]
-    db.query(query, values, function (err, results) {
-      const error = `Database error: ${err}`
-      if (err) throw error
-      callback()
-    })
+    return db.query(query, values)
   },
   async delete (id) {
     let results = await db.query(`

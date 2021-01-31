@@ -35,33 +35,64 @@ module.exports = {
     if (!chef) return res.send('Chef not found!')
 
     results = await Chef.files(chef.id)
-    let files = results.rows
-    files = files.map(file => ({
+    let file = results.rows
+    file = {
       ...file,
       src: `${req.protocol}://${req.headers.host}/${file.path}`
-    }))
+    }
 
-    return res.render('admin/chefs/edit', { chef, files })
+    return res.render('admin/chefs/edit', { chef, file })
   },
   // POST
   async post (req, res) {
+    const keys = Object.keys(req.body)
+    for (key of keys) {
+      if (req.body[key] == "") {
+        return res.send("Please, fill all fields")
+      }
+    }
+    if (req.files.length == 0) {
+      return res.send('Please, send at least one image')
+    }
     try {
       const { filename, path } = req.files[0]
       const file = await File.createChef({ name: filename, path })
       const fileId = file.rows[0].id
-
+     
       const name = req.body.name
       const chefId = await Chef.create({ name, fileId })
 
-      return res.redirect(`/admin/chefs/${chefId}`)
+      res.redirect(`/admin/chefs/${chefId.rows[0].id}`)
     } catch (err) {
       console.log(err)
     }
   },
-  put (req, res) {
-    Chef.update(req.body, function () {
+  async put (req, res) {
+    try {
+      const keys = Object.keys(req.body)
+      for (key of keys) {
+        if (req.body[key] == "" && key != "removed_files") {
+          return res.send('Please, fill all fields!')
+        }
+      }
+
+      if (req.files.length != 0) {
+        const newFilesPromise = req.files.map( file => 
+          File.create({
+            ...file,
+            chef_id: req.body.id }))
+
+        await Promise.all(newFilesPromise)
+      }
+
+      Chef.update(req.body)
+
+      await File.delete(req.body.file_id)
+
       return res.redirect(`/admin/chefs/${req.body.id}`)
-    })
+    } catch (err) {
+      console.log(err)
+    }
   },
   async delete (req, res) {
     if (req.body.total >= 1) {

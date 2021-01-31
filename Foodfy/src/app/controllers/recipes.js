@@ -81,7 +81,7 @@ module.exports = {
     }
 
     if (req.body.author == "") {
-      res.send('por favor selecione um chef')
+      res.send('please select a chef')
     } else {
       const results = await Recipe.create(req.body)
       const recipeId = results.rows[0].id

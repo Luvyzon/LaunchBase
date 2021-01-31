@@ -12,10 +12,11 @@
     <div>Avatar</div>
     
     <div>
-        {% if chef.image %}
+        {% if file %}
             <div>
-                <input type="text">
+                <input type="text" value="{{file[0].name}}">
             </div>
+            
         {% endif %}
        
         <div class=upload_photo_chef>
