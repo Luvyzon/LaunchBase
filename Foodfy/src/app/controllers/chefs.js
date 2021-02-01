@@ -1,4 +1,5 @@
 const Chef = require('../models/chef')
+const Recipe = require('../models/recipe.js')
 const File = require('../models/file')
 
 module.exports = {
@@ -7,7 +8,20 @@ module.exports = {
       const results = await Chef.all()
       const chefs = results.rows
 
-      return res.render('admin/chefs/index', { chefs })
+      /* eslint-disable */
+      async function getImage(chefId) {
+        let results = await Chef.files(chefId)
+        let file = results.rows[0]
+        return `${req.protocol}://${req.headers.host}/${file.path}`
+      }
+      /* eslint-enable */
+      const chefsPromise = chefs.map(async chef => {
+        chef.image = await getImage(chef.id)
+        return chef
+      })
+      const allChefs = await Promise.all(chefsPromise)
+
+      return res.render('admin/chefs/index', { chefs, chef: allChefs })
     } catch (err) {
       console.log(err)
     }
@@ -19,12 +33,32 @@ module.exports = {
     try {
       let results = await Chef.find(req.params.id)
       const chef = results.rows[0]
+
       if (!chef) return res.send('Chef not found!')
 
       results = await Chef.findRecipesByChef(req.params.id)
       const recipes = results.rows
 
-      return res.render('admin/chefs/show', { chef, recipes })
+      results = await Chef.files(chef.id)
+      let file = results.rows[0]
+      file = {
+        ...file,
+        src: `${req.protocol}://${req.headers.host}/${file.path}`
+      }
+      /* eslint-disable */
+      async function getImage(recipeId) {
+        let results = await Recipe.files(recipeId)
+        let file = results.rows[0]
+        return `${req.protocol}://${req.headers.host}/${file.path}`
+      }
+      /* eslint-enable */
+      const recipesPromise = recipes.map(async recipe => {
+        recipe.image = await getImage(recipe.id)
+        return recipe
+      })
+      const allRecipes = await Promise.all(recipesPromise)
+      console.log(allRecipes)
+      return res.render('admin/chefs/show', { chef, recipes, file, fileRecipes: allRecipes })
     } catch (err) {
       console.log(err)
     }
@@ -35,7 +69,7 @@ module.exports = {
     if (!chef) return res.send('Chef not found!')
 
     results = await Chef.files(chef.id)
-    let file = results.rows
+    let file = results.rows[0]
     file = {
       ...file,
       src: `${req.protocol}://${req.headers.host}/${file.path}`
@@ -75,19 +109,23 @@ module.exports = {
           return res.send('Please, fill all fields!')
         }
       }
-
       if (req.files.length != 0) {
-        const newFilesPromise = req.files.map( file => 
-          File.create({
-            ...file,
-            chef_id: req.body.id }))
-
-        await Promise.all(newFilesPromise)
+        const { filename, path } = req.files[0]
+        const file = await File.createChef({ name: filename, path })
+        const fileId = file.rows[0].id
+        Chef.updateFile(req.body.id, fileId)
       }
-
-      Chef.update(req.body)
-
-      await File.delete(req.body.file_id)
+      if (req.body.removed_files) {
+        const removedFiles = req.body.removed_files.split(",")
+        lastIndex = removedFiles.length - 1
+        removedFiles.splice(lastIndex, 1)
+  
+        const removedFilesPromise = removedFiles.map(id => File.delete(id))
+  
+        await Promise.all(removedFilesPromise)
+      }
+      
+      Chef.update(req.body.id, req.body.name)
 
       return res.redirect(`/admin/chefs/${req.body.id}`)
     } catch (err) {

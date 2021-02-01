@@ -12,12 +12,23 @@
     <div>Avatar</div>
     
     <div>
-        {% if file %}
-            <div>
-                <input type="text" value="{{file[0].name}}">
-            </div>
-            
-        {% endif %}
+        <div id="photos-preview">
+            {% if file %}
+                
+                <div class="photo" id="{{file.id}}">
+                    <img src="{{file.src}}" alt="{{file.name}}">
+                    <i 
+                    class="material-icons"
+                    onclick="PhotosUpload.removeOldPhoto(event, 1)"
+                    >
+                    close
+                    </i>
+
+                </div>
+
+                <input type="hidden" name="removed_files">
+            {% endif %}
+        </div>
        
         <div class=upload_photo_chef>
             <button class="button_send_avatar">Enviar Avatar</button>
@@ -26,7 +37,8 @@
                 id="input_avatar_chef"
                 type="file"
                 accept="image/*"
-                onchange="ImagesUpload.handleFileInput(event, 1)"
+                onchange="PhotosUpload.handleFileInput(event, 1)"
+                value=""
             >
                          
         </div>

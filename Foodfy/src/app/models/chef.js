@@ -38,17 +38,27 @@ module.exports = {
       GROUP BY chefs.id
       `, [id])
   },
-  update (data) {
+  update (id, name) {
     const query = `
       UPDATE chefs SET
-        name=($1),
-        avatar_url=($2)
-      WHERE id = $3
+        name=($1)
+      WHERE id = $2
     `
     const values = [
-      data.name,
-      data.avatar_url,
-      data.id
+      name,
+      id
+    ]
+    return db.query(query, values)
+  },
+  updateFile (id, file_id) {
+    const query = `
+      UPDATE chefs SET
+        file_id=($1)
+      WHERE id = $2
+    `
+    const values = [
+      file_id,
+      id
     ]
     return db.query(query, values)
   },
