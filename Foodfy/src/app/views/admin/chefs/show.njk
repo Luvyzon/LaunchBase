@@ -19,7 +19,7 @@
 <div class="listChefRecipes">
     {% for recipe in recipes %}
             <div class="cardChef">
-                <img class="cardChefImage" src="{{fileRecipes.image}}">
+                <img class="cardChefImage" src="{{recipe.image}}">
                 <div class="cardChefDescription">
                 <p>{{recipe.title}}</p>
                 <p>por {{chef.name}}</p>

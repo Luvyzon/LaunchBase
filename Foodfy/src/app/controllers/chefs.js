@@ -56,9 +56,9 @@ module.exports = {
         recipe.image = await getImage(recipe.id)
         return recipe
       })
-      const allRecipes = await Promise.all(recipesPromise)
-      console.log(allRecipes)
-      return res.render('admin/chefs/show', { chef, recipes, file, fileRecipes: allRecipes })
+      await Promise.all(recipesPromise)
+      
+      return res.render('admin/chefs/show', { chef, recipes, file })
     } catch (err) {
       console.log(err)
     }
