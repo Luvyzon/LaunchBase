@@ -31,7 +31,7 @@ module.exports = {
     LEFT JOIN chefs
     ON (recipes.chef_id = chefs.id)
     ${filterQuery}
-    ORDER BY recipes.id
+    ORDER BY recipes.created_at DESC
     `
     db.query(query, function (err, results) {
       const error = `Database error: ${err}`
