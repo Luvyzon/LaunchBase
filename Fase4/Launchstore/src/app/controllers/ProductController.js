@@ -3,7 +3,6 @@ const { formatPrice, date } = require('../../lib/utils')
 const Category = require('../models/Category')
 const Product = require('../models/Product')
 const File = require('../models/File')
-const { resume } = require('browser-sync')
 
 module.exports = {
   create (req, res) {
@@ -78,6 +77,7 @@ module.exports = {
 
     results = await Product.files(product.id)
     let files = results.rows
+    console.log(results.rows)
     files = files.map(file => ({
       ...file,
       src:`${req.protocol}://${req.headers.host}/${file.path}`
