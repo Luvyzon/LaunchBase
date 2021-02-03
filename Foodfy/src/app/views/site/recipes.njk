@@ -21,8 +21,8 @@
         <section class="cards">
          {% for recipe in recipes %}
                 <div class="cardRecipe">
-                    <a href="/recipes/{{recipe.id}}">
-                        <img class="cardRecipeImage" src="{{recipe.image_url}}">
+                    <a href="/recipe/{{recipe.id}}">
+                        <img class="cardRecipeImage" src="{{recipe.image}}">
                     </a>
                     <div class="cardRecipeDescription">
                     <p>{{recipe.title}}</p>

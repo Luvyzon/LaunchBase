@@ -9,7 +9,7 @@ module.exports = {
     FROM chefs
     INNER JOIN recipes
     ON chefs.id = recipes.chef_id
-    ORDER BY chefs.id
+    ORDER BY recipes.created_at DESC
     `)
   },
   find () {

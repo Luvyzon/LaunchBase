@@ -13,8 +13,9 @@ routes.get('/', function (_req, res) {
 routes.get('/index', site.index)
 routes.get('/about', site.about)
 routes.get('/recipes', site.recipes)
+routes.get('/recipe/:id', site.RecipeShow)
 routes.get('/chefs', site.chefs)
-routes.get('/recipes/:id', site.show)
+
 
 // ADMIN RECIPES
 routes.get('/admin', function (req, res) {
