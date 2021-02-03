@@ -16,11 +16,9 @@ module.exports = {
       try {
         const results = await Site.allRecipes(filter)
         const recipes = results.rows
-        console.log(recipes)
         /* eslint-disable */
         async function getImage(recipeId) {
           let results = await Recipe.files(recipeId)
-          console.log(results.rows)
           let file = results.rows[0]
           return `${req.protocol}://${req.headers.host}/${file.path}`
         }
@@ -32,7 +30,6 @@ module.exports = {
         const allRecipes = await Promise.all(recipesPromise)
 
         return res.render('site/recipes', { recipes: allRecipes })
-
 
       } catch (err) {
         console.log(err)

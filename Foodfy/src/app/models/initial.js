@@ -25,7 +25,7 @@ module.exports = {
     LEFT JOIN chefs
     ON recipes.chef_id = chefs.id
     ${filterQuery}
-    ORDER BY recipes.created_at DESC
+    ORDER BY recipes.updated_at DESC
     `
     return db.query(query)
   }
