@@ -90,6 +90,7 @@ module.exports = {
     SELECT *
     FROM recipes
     WHERE chef_id = $1
+    ORDER BY created_at DESC
     `, [id])
   },
   files (id) {

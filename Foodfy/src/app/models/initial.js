@@ -21,9 +21,9 @@ module.exports = {
     }
     query = `
     SELECT *
-    FROM recipes
-    LEFT JOIN chefs
-    ON recipes.chef_id = chefs.id
+    FROM chefs
+    LEFT JOIN recipes
+    ON chefs.id = recipes.chef_id
     ${filterQuery}
     ORDER BY recipes.updated_at DESC
     `

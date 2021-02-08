@@ -138,6 +138,20 @@ height: 40px;
 }
 
 /*====== PAGE Receita ========*/
+.cardRecipe{
+    display: flex;
+    padding: 16px;
+}
+.cardRecipeImage{
+    width: 200px;
+    height: 80px;
+    border-radius: 16px;
+}
+.cardRecipeDescription{
+    padding-left: 20px;
+}
+
+}
 .cardRecipe a {
     text-decoration: none;
 }

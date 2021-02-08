@@ -15,6 +15,7 @@ routes.get('/about', site.about)
 routes.get('/recipes', site.recipes)
 routes.get('/recipe/:id', site.RecipeShow)
 routes.get('/chefs', site.chefs)
+routes.get('/chef/:id', site.ChefShow)
 
 
 // ADMIN RECIPES

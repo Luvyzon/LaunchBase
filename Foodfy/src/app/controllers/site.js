@@ -94,5 +94,39 @@ module.exports = {
     }))
     console.log(files)
     return res.render('site/show', { recipe, chef, files })
+  },
+  async ChefShow (req, res) {
+    try {
+      let results = await Chef.find(req.params.id)
+      const chef = results.rows[0]
+
+      if (!chef) return res.send('Chef not found!')
+
+      results = await Chef.findRecipesByChef(req.params.id)
+      const recipes = results.rows
+
+      results = await Chef.files(chef.id)
+      let file = results.rows[0]
+      file = {
+        ...file,
+        src: `${req.protocol}://${req.headers.host}/${file.path}`
+      }
+      /* eslint-disable */
+      async function getImage(recipeId) {
+        let results = await Recipe.files(recipeId)
+        let file = results.rows[0]
+        return `${req.protocol}://${req.headers.host}/${file.path}`
+      }
+      /* eslint-enable */
+      const recipesPromise = recipes.map(async recipe => {
+        recipe.image = await getImage(recipe.id)
+        return recipe
+      })
+      await Promise.all(recipesPromise)
+      
+      return res.render('site/chefShow', { chef, recipes, file })
+    } catch (err) {
+      console.log(err)
+    }
   }
 }

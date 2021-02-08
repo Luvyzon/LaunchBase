@@ -10,14 +10,19 @@
 {% for chef in chefs %}
 
 <input type="hidden" value="{{chef.id}}">
+
 <div class="infoChef">
+   
     <div class="avatarChef">
-        <img src="{{chef.image}}">
+        <a href="/chef/{{chef.id}}">
+            <img src="{{chef.image}}">
+        </a>
     </div>
     <div class="cardChefDescription">
         <div class="nameChef">{{chef.name}}</div>
         <p>{{chef.total}} receitas</p>
     </div>
+   
 </div>
 {% endfor %}
 
