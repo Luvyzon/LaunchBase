@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <link rel="stylesheet" href="/public/styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        {% block head %}
+
+        {% endblock %}
+    </head>
+    <body>
+        {% include "parts/header.njk" %}
+
+        {% block content %}{% endblock %}
+
+        {% include "parts/footer.njk" %}
+
+    </body>
+</html>
