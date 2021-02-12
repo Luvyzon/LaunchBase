@@ -5,7 +5,8 @@
         type="text"
         name="name" 
         value="{{ user.name }}" 
-        placeholder="Digite seu nome completo">
+        placeholder="Digite seu nome completo"
+        required>
     </div>
 </div>
 
@@ -50,7 +51,8 @@
         name="cpf_cnpj" 
         value="{{ user.cpf_cnpj }}" 
         placeholder="Digite seu documento"
-        onkeydown="Mask.apply(this, 'cpfCnpj')">
+        onkeydown="Mask.apply(this, 'cpfCnpj')"
+        onblur="Validate.apply(this, 'isCpfCnpj')">
     </div>
 </div>
 <div class="item">
@@ -61,7 +63,8 @@
         name="cep" 
         value="{{ user.cep }}" 
         placeholder="99999-999"
-        onkeydown="Mask.apply(this, 'cep')">
+        onkeydown="Mask.apply(this, 'cep')"
+        onblur="Validate.apply(this, 'isCep')">
     </div>
 </div>
 <div class="item">
