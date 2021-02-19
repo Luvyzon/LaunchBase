@@ -59,7 +59,6 @@ async function update(req, res, next) {
   if (fillAllFields){
     return res.render("user/index", fillAllFields)
   }
-
   const { id, password } = req.body
   
   if (!password) return res.render("user/index", {
