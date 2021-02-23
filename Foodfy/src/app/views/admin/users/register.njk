@@ -1,0 +1,35 @@
+{% extends 'admin/layout.njk' %}
+
+{% block content %}
+<div class="registerFormHead">
+  <p>Criar Usuário</p>
+  <button type="submit" form="postForm">Salvar</button>
+  <a href="/admin/users">Cancelar</a>
+</div>
+
+<form id="postForm" action="/admin/users" method="post">
+<div class="registerFormItems">
+<div class="registerFormItem">
+  <p>Nome</p>
+  <div>
+    <input type="text" name="name">
+  </div>
+</div>
+<div class="registerFormItem">
+  <p>Email</p>
+  <div>
+    <input type="email" name="email">
+  </div>
+</div>
+</div>
+<div class="registerFormAdmin">
+<input type="checkbox" name="isadmin">
+<p>Administrador</p>
+</div>
+
+
+
+</form>
+
+
+{% endblock content %}
